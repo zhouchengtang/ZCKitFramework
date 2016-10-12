@@ -11,6 +11,7 @@
 @interface ViewController ()<ZCURLDataSourceDelegate>
 
 @property(nonatomic, strong)ZCURLDataSource * urlDataSource;
+@property(nonatomic, strong)IBOutlet ZCTextView * textView;
 
 @end
 
@@ -18,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_textView setText:@"loading"];
     // Do any additional setup after loading the view, typically from a nib.
     _urlDataSource = [[ZCURLDataSource alloc] init];
     [_urlDataSource setDelegate:self];
@@ -33,6 +35,8 @@
 - (void)ZCDataSourceDidLoadResultsData:(ZCURLDataSource *)dataSource
 {
     NSLog(@"%@", dataSource.dataObject);
+    NSString * dataObjectStr = [NSString stringWithFormat:@"%@", dataSource.dataObject];
+    _textView.text = [dataObjectStr makeUnicodeToString];
 }
 
 - (void)didReceiveMemoryWarning {
