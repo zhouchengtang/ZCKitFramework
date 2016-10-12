@@ -42,9 +42,9 @@
     NSLog(@"%@", [sq getStringById:@"string_key" fromTable:tableName]);
     
     NSData * data = [@"dasjkdjalskdjalsdjlajd" dataUsingEncoding:NSUTF8StringEncoding];
-    NSData * enData = [data encryptedWithAES256UsingKey:@"1234"];
+    NSData * enData = [data encryptedWithAES256UsingKey:@"12345"];
     NSLog(@"%@", enData);
-    NSLog(@"%@", [[NSString alloc] initWithData:[enData decryptedWithAES256UsingKey:@"1234"] encoding:NSUTF8StringEncoding]);
+    NSLog(@"%@", [[NSString alloc] initWithData:[enData decryptedWithAES256UsingKey:@"12345"] encoding:NSUTF8StringEncoding]);
     
     UIView * view = [[UIView alloc] initWithFrame:CGRectZero];
     NSLog(@"%@", @([view isVisable]));
