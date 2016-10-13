@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZCTableDataController.h"
+#import <ZCKit/IZCUIViewController.h>
 //#import "ZCDataOutletContainer.h"
 
 typedef enum _ZCViewControllerLoadingViewStyle : NSInteger
@@ -17,7 +18,7 @@ typedef enum _ZCViewControllerLoadingViewStyle : NSInteger
     
 }ZCViewControllerLoadingViewStyle;
 
-@interface ZCViewController : UIViewController<ZCTableDataControllerDelegate, ZCTableViewDataSource>
+@interface ZCViewController : UIViewController<ZCTableDataControllerDelegate, ZCTableViewDataSource, IZCUIViewController>
 
 @property(nonatomic, strong)IBOutlet UITableView * contentTableView;
 @property(nonatomic, strong)NSMutableArray * dataObjects;

@@ -28,6 +28,19 @@
 
 + (id)URLWithString:(NSString *)URLString queryValues:(id) queryValues;
 
++ (NSString *) decodeQueryValue:(NSString *) queryValue;
+
 + (NSString *) encodeQueryValue:(NSString *) queryValue;
+
++ (NSDictionary *) decodeQuery:(NSString *) query;
+
++ (NSString *) encodeQueryValues:(NSDictionary *) queryValues;
+
+-(NSString *) firstPathComponent;
+
+-(NSString *) firstPathComponent:(NSString *) basePath;
+
+-(NSArray *) pathComponents:(NSString *) basePath;
+
 
 @end

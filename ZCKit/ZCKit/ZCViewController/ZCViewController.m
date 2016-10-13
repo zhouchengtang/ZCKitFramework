@@ -30,6 +30,14 @@
 
 @implementation ZCViewController
 
+@synthesize parentController = _parentController;
+@synthesize config = _config;
+@synthesize alias = _alias;
+@synthesize url = _url;
+@synthesize dataOutletContainer = _dataOutletContainer;
+@synthesize scheme = _scheme;
+@synthesize controllers = _controllers;
+
 -(BOOL)shouldAutorotate
 {
     return NO;

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A04C9721DAF361F00BE9869 /* ZCPContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A04C9701DAF361F00BE9869 /* ZCPContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A04C9731DAF361F00BE9869 /* ZCPContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A04C9711DAF361F00BE9869 /* ZCPContext.m */; };
+		8A1247371DAF545200F2DA9C /* IZCServiceContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A1247361DAF545200F2DA9C /* IZCServiceContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A1247391DAF579E00F2DA9C /* IZCService.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A1247381DAF579E00F2DA9C /* IZCService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A12473B1DAF93F800F2DA9C /* IZCUIViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A12473A1DAF93F800F2DA9C /* IZCUIViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A3515D31DAF3DC00048EE61 /* IZCTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A3515D11DAF3DA30048EE61 /* IZCTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A3515D41DAF3DC20048EE61 /* IZCAuthContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A04C9761DAF36BD00BE9869 /* IZCAuthContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A3515D51DAF3DC40048EE61 /* IZCServiceContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A04C9751DAF369500BE9869 /* IZCServiceContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A3515D61DAF3DC60048EE61 /* IZCContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A04C9741DAF364900BE9869 /* IZCContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A61328C1DAB3FA40098158B /* ZCKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A61328A1DAB3FA40098158B /* ZCKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A6133CD1DAB3FE20098158B /* NSArray+ZCSaceAccess.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A6132951DAB3FE20098158B /* NSArray+ZCSaceAccess.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A6133CE1DAB3FE20098158B /* NSArray+ZCSaceAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6132961DAB3FE20098158B /* NSArray+ZCSaceAccess.m */; };
@@ -338,6 +347,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A04C9701DAF361F00BE9869 /* ZCPContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCPContext.h; sourceTree = "<group>"; };
+		8A04C9711DAF361F00BE9869 /* ZCPContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCPContext.m; sourceTree = "<group>"; };
+		8A04C9741DAF364900BE9869 /* IZCContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IZCContext.h; sourceTree = "<group>"; };
+		8A04C9751DAF369500BE9869 /* IZCServiceContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IZCServiceContext.h; sourceTree = "<group>"; };
+		8A04C9761DAF36BD00BE9869 /* IZCAuthContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IZCAuthContext.h; sourceTree = "<group>"; };
+		8A1247361DAF545200F2DA9C /* IZCServiceContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCServiceContainer.h; sourceTree = "<group>"; };
+		8A1247381DAF579E00F2DA9C /* IZCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCService.h; sourceTree = "<group>"; };
+		8A12473A1DAF93F800F2DA9C /* IZCUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCUIViewController.h; sourceTree = "<group>"; };
+		8A3515D11DAF3DA30048EE61 /* IZCTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCTask.h; sourceTree = "<group>"; };
 		8A6132871DAB3FA40098158B /* ZCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A61328A1DAB3FA40098158B /* ZCKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCKit.h; sourceTree = "<group>"; };
 		8A61328B1DAB3FA40098158B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1576,13 +1594,22 @@
 		8A7A5DE11DACC93100394E43 /* ZCCommonUtilities */ = {
 			isa = PBXGroup;
 			children = (
+				8A7A5DE41DACC93100394E43 /* ZCNetworking */,
 				8A7A5DE21DACC93100394E43 /* ZCLoadImageHelper.h */,
 				8A7A5DE31DACC93100394E43 /* ZCLoadImageHelper.m */,
-				8A7A5DE41DACC93100394E43 /* ZCNetworking */,
 				8A7A5DEB1DACC93100394E43 /* ZCURLCacheObject.h */,
 				8A7A5DEC1DACC93100394E43 /* ZCURLCacheObject.m */,
 				8A7A5DED1DACC93100394E43 /* ZCURLDataSource.h */,
 				8A7A5DEE1DACC93100394E43 /* ZCURLDataSource.m */,
+				8A04C9701DAF361F00BE9869 /* ZCPContext.h */,
+				8A04C9711DAF361F00BE9869 /* ZCPContext.m */,
+				8A04C9741DAF364900BE9869 /* IZCContext.h */,
+				8A04C9751DAF369500BE9869 /* IZCServiceContext.h */,
+				8A04C9761DAF36BD00BE9869 /* IZCAuthContext.h */,
+				8A3515D11DAF3DA30048EE61 /* IZCTask.h */,
+				8A1247361DAF545200F2DA9C /* IZCServiceContainer.h */,
+				8A1247381DAF579E00F2DA9C /* IZCService.h */,
+				8A12473A1DAF93F800F2DA9C /* IZCUIViewController.h */,
 			);
 			path = ZCCommonUtilities;
 			sourceTree = "<group>";
@@ -1616,6 +1643,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A04C9721DAF361F00BE9869 /* ZCPContext.h in Headers */,
+				8A1247391DAF579E00F2DA9C /* IZCService.h in Headers */,
+				8A12473B1DAF93F800F2DA9C /* IZCUIViewController.h in Headers */,
+				8A1247371DAF545200F2DA9C /* IZCServiceContainer.h in Headers */,
+				8A3515D61DAF3DC60048EE61 /* IZCContext.h in Headers */,
+				8A3515D41DAF3DC20048EE61 /* IZCAuthContext.h in Headers */,
+				8A3515D31DAF3DC00048EE61 /* IZCTask.h in Headers */,
+				8A3515D51DAF3DC40048EE61 /* IZCServiceContext.h in Headers */,
 				8C0C05F71DAD2D2800439B3F /* ZCTextView.h in Headers */,
 				8C0C05EE1DAD2B3400439B3F /* ZCRefreshTableDataController.h in Headers */,
 				8C0C05F21DAD2D0E00439B3F /* ZCNoMessageView.h in Headers */,
@@ -1967,6 +2002,7 @@
 				8A6134BB1DAB3FE20098158B /* ZCTableViewCell.m in Sources */,
 				8A61340A1DAB3FE20098158B /* NSString+ZCSize.m in Sources */,
 				8A6134601DAB3FE20098158B /* UISearchBar+ZCBlocks.m in Sources */,
+				8A04C9731DAF361F00BE9869 /* ZCPContext.m in Sources */,
 				8A7A5E0D1DACC93100394E43 /* UIImage+ZCSD_MultiFormat.m in Sources */,
 				8A6134A51DAB3FE20098158B /* ZCAlertView.m in Sources */,
 				8A7A5E1F1DACC93100394E43 /* ZC_SDWebImageDecoder.m in Sources */,

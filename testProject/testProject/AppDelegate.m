@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <ZCKit/ZCKit.h>
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    UINavigationController * nav = [[ZCNavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
+    self.window.rootViewController = nav;
+    
     ZCBaseModel * model = [[ZCBaseModel alloc] init];
     [model dictionaryWithModel];
     
@@ -48,6 +54,10 @@
     
     UIView * view = [[UIView alloc] initWithFrame:CGRectZero];
     NSLog(@"%@", @([view isVisable]));
+    
+    [[ZCPContext sharedInstance] loadConfig:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"cfg" ofType:@"plist"]] bundle:nil];
+    
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
