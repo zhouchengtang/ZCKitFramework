@@ -13,7 +13,7 @@
 #import <ZCKit/IZCServiceContext.h>
 #import <ZCKit/IZCUIViewController.h>
 
-@interface ZCPContext : NSObject<IZCContext, IZCAuthContext, IZCServiceContext, IZCUIViewController>
+@interface ZCPContext : NSObject<IZCContext, IZCAuthContext, IZCServiceContext>
 
 + (ZCPContext *)sharedInstance;
 
