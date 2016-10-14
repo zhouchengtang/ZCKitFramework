@@ -11,6 +11,9 @@
 #import "ZCTableView.h"
 #import "UIView+ZCUtilities.h"
 #import "ZCAlertView.h"
+#import "ZCPContext.h"
+#import "NSURL+ZCParam.h"
+#import "ZCNavigationController.h"
 
 #define CARMERA_BUTTON_WIDTH 50
 
@@ -37,6 +40,9 @@
 @synthesize dataOutletContainer = _dataOutletContainer;
 @synthesize scheme = _scheme;
 @synthesize controllers = _controllers;
+@synthesize viewControllerCallback = _viewControllerCallback;
+@synthesize viewControllerURLResultsCallback = _viewControllerURLResultsCallback;
+@synthesize parameterObject = _parameterObject;
 
 -(BOOL)shouldAutorotate
 {
@@ -137,12 +143,6 @@
     }
 }
 
-
-- (void)backItemButtonClicked:(UIBarButtonItem *)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)initTableViewWithFrame:(CGRect)frame style:(UITableViewStyle)tableViewStylel
 {
     _contentTableView = [[ZCTableView alloc] initWithFrame:frame style:tableViewStylel];
@@ -191,8 +191,6 @@
         self.navigationController.interactivePopGestureRecognizer.delegate = self;
     }
     
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backItemButtonClicked:)];
-    
     if (!_tableDataController) {
         _tableDataController = [[ZCTableDataController alloc] init];
     }
@@ -240,6 +238,104 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.contentTableView.frame = self.view.bounds;
     }completion:^(BOOL finish){}];
+}
+
+#pragma mark - openUrl
+- (BOOL)canOpenUrl:(NSURL *)url
+{
+    NSString * scheme = [url scheme];
+    if ([scheme isEqualToString:@"pop"] || [[url absoluteString] isEqualToString:@"."]) {
+        return YES;
+    }else if ([scheme isEqualToString:@"present"]){
+        return YES;
+    }else if([[ZCPContext sharedInstance] getViewControllerForURL:url]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)openUrl:(NSURL *)url animated:(BOOL)animated
+{
+    return [self openUrl:url animated:animated object:nil callback:nil];
+}
+
+- (BOOL)openUrl:(NSURL *)url animated:(BOOL)animated object:(id)object
+{
+    return [self openUrl:url animated:animated object:object callback:nil];
+}
+
+- (BOOL)openUrl:(NSURL *)url animated:(BOOL)animated callback:(ZCViewConrollerCallback)callback
+{
+    return [self openUrl:url animated:animated callback:callback];
+}
+
+- (BOOL)openUrl:(NSURL *)url animated:(BOOL)animated object:(id)object callback:(ZCViewConrollerCallback)callback
+{
+    NSString * scheme = [url scheme];
+    
+    if ([[url absoluteString] isEqualToString:@"."]) {
+        if ([self.scheme isEqualToString:@"present"]) {
+            [self dismissViewControllerAnimated:animated completion:nil];
+        }else{
+            [self.navigationController popViewControllerAnimated:animated];
+        }
+        return YES;
+    }else if ([scheme isEqualToString:@"pop"]) {
+        NSURL * b_url = [ZCPContext removeSchemeWithURL:url];
+        if (b_url.pathComponents.count == 1 && [[b_url firstPathComponent] isEqualToString:@"root"]) {
+            [self.navigationController popToRootViewControllerAnimated:animated];
+            return YES;
+        }else{
+            for (NSInteger i = self.navigationController.viewControllers.count - 1; i > -1 ; i--) {
+                id viewController = [self.navigationController.viewControllers objectAtIndex:i];
+                if ([[[viewController url] absoluteString] isEqualToString:[b_url absoluteString]]) {
+                    [self.navigationController popToViewController:viewController animated:animated];
+                    return YES;
+                }
+            }
+        }
+    }else if([scheme isEqualToString:@"present"]){
+        
+        NSURL * b_url = [ZCPContext removeSchemeWithURL:url];
+        id viewController = nil;
+        id navigationController = nil;
+        if ([[b_url firstPathComponent] isEqualToString:@"nav"]) {
+            url = [NSURL URLWithString:[[url absoluteString] stringByReplacingOccurrencesOfString:@"nav/" withString:@""]];
+            viewController = [[ZCPContext sharedInstance] getViewControllerForURL:url];
+            navigationController = [[ZCNavigationController alloc] initWithRootViewController:viewController];
+        }else{
+            viewController = [[ZCPContext sharedInstance] getViewControllerForURL:url];
+        }
+        
+        if (viewController) {
+            if (object) {
+                [viewController setParameterObject:object];
+            }
+            if (callback) {
+                [viewController setViewControllerCallback:callback];
+            }
+            if (navigationController) {
+                [self presentViewController:navigationController animated:YES completion:nil];
+            }else{
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+            return YES;
+        }
+    }else{
+        id viewController = [[ZCPContext sharedInstance] getViewControllerForURL:url];
+        if (viewController) {
+            if (object) {
+                [viewController setParameterObject:object];
+            }
+            if (callback) {
+                [viewController setViewControllerCallback:callback];
+            }
+            [self.navigationController pushViewController:viewController animated:animated];
+            return YES;
+        }
+    }
+    
+    return NO;
 }
 
 - (void)didReceiveMemoryWarning

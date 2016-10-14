@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ZCKit/ZCKit.h>
 
-@interface ViewController : ZCViewController
+@interface ViewController : BaseTestViewController
 
 
 @end

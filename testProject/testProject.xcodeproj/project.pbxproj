@@ -16,6 +16,12 @@
 		8A6132531DAB38170098158B /* testProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A6132521DAB38170098158B /* testProjectTests.m */; };
 		8A61325E1DAB38170098158B /* testProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A61325D1DAB38170098158B /* testProjectUITests.m */; };
 		8A7A5E3C1DACCB4700394E43 /* ZCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7A5E3B1DACCB3600394E43 /* ZCKit.framework */; };
+		8A9500751DB0A8EC00659946 /* ViewController_A.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9500731DB0A8EC00659946 /* ViewController_A.m */; };
+		8A9500761DB0A8EC00659946 /* ViewController_A.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9500741DB0A8EC00659946 /* ViewController_A.xib */; };
+		8A95007A1DB0A8FC00659946 /* ViewController_B.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9500791DB0A8FC00659946 /* ViewController_B.m */; };
+		8A95007E1DB0A91100659946 /* ViewController_C.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A95007C1DB0A91100659946 /* ViewController_C.m */; };
+		8A95007F1DB0A91100659946 /* ViewController_C.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A95007D1DB0A91100659946 /* ViewController_C.xib */; };
+		8A9500821DB0C38B00659946 /* BaseTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9500811DB0C38B00659946 /* BaseTestViewController.m */; };
 		8AE830161DAB6EF500925410 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A55CAF21DAB44BE0047CEFD /* libsqlite3.tbd */; };
 		8AE830171DAB6EFB00925410 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A55CAF01DAB44B60047CEFD /* SystemConfiguration.framework */; };
 		8AE830181DAB6F0200925410 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A55CAEE1DAB44B00047CEFD /* libc++.tbd */; };
@@ -68,6 +74,17 @@
 		8A61325D1DAB38170098158B /* testProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testProjectUITests.m; sourceTree = "<group>"; };
 		8A61325F1DAB38170098158B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7A5E361DACCB3600394E43 /* ZCKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZCKit.xcodeproj; path = ../../ZCKit/ZCKit.xcodeproj; sourceTree = "<group>"; };
+		8A9500721DB0A8EC00659946 /* ViewController_A.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_A.h; sourceTree = "<group>"; };
+		8A9500731DB0A8EC00659946 /* ViewController_A.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_A.m; sourceTree = "<group>"; };
+		8A9500741DB0A8EC00659946 /* ViewController_A.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController_A.xib; sourceTree = "<group>"; };
+		8A9500781DB0A8FC00659946 /* ViewController_B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_B.h; sourceTree = "<group>"; };
+		8A9500791DB0A8FC00659946 /* ViewController_B.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_B.m; sourceTree = "<group>"; };
+		8A95007B1DB0A91100659946 /* ViewController_C.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_C.h; sourceTree = "<group>"; };
+		8A95007C1DB0A91100659946 /* ViewController_C.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_C.m; sourceTree = "<group>"; };
+		8A95007D1DB0A91100659946 /* ViewController_C.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController_C.xib; sourceTree = "<group>"; };
+		8A9500801DB0C38B00659946 /* BaseTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTestViewController.h; sourceTree = "<group>"; };
+		8A9500811DB0C38B00659946 /* BaseTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTestViewController.m; sourceTree = "<group>"; };
+		8A9500831DB0C3CE00659946 /* testProject-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testProject-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +155,23 @@
 				8A7A5E361DACCB3600394E43 /* ZCKit.xcodeproj */,
 				8A61323B1DAB38170098158B /* AppDelegate.h */,
 				8A61323C1DAB38170098158B /* AppDelegate.m */,
+				8A9500801DB0C38B00659946 /* BaseTestViewController.h */,
+				8A9500811DB0C38B00659946 /* BaseTestViewController.m */,
 				8A61323E1DAB38170098158B /* ViewController.h */,
 				8A61323F1DAB38170098158B /* ViewController.m */,
+				8A9500721DB0A8EC00659946 /* ViewController_A.h */,
+				8A9500731DB0A8EC00659946 /* ViewController_A.m */,
+				8A9500741DB0A8EC00659946 /* ViewController_A.xib */,
+				8A9500781DB0A8FC00659946 /* ViewController_B.h */,
+				8A9500791DB0A8FC00659946 /* ViewController_B.m */,
+				8A95007B1DB0A91100659946 /* ViewController_C.h */,
+				8A95007C1DB0A91100659946 /* ViewController_C.m */,
+				8A95007D1DB0A91100659946 /* ViewController_C.xib */,
 				8A6132441DAB38170098158B /* Assets.xcassets */,
 				8A6132461DAB38170098158B /* LaunchScreen.storyboard */,
 				8A6132491DAB38170098158B /* Info.plist */,
 				8A12473C1DAF978800F2DA9C /* cfg.plist */,
+				8A9500831DB0C3CE00659946 /* testProject-Prefix.pch */,
 				8A6132381DAB38170098158B /* Supporting Files */,
 			);
 			path = testProject;
@@ -306,8 +334,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9500761DB0A8EC00659946 /* ViewController_A.xib in Resources */,
 				8A6132481DAB38170098158B /* LaunchScreen.storyboard in Resources */,
 				8A6132451DAB38170098158B /* Assets.xcassets in Resources */,
+				8A95007F1DB0A91100659946 /* ViewController_C.xib in Resources */,
 				8A12473D1DAF978800F2DA9C /* cfg.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -333,7 +363,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A95007E1DB0A91100659946 /* ViewController_C.m in Sources */,
+				8A95007A1DB0A8FC00659946 /* ViewController_B.m in Sources */,
+				8A9500751DB0A8EC00659946 /* ViewController_A.m in Sources */,
 				8A6132401DAB38170098158B /* ViewController.m in Sources */,
+				8A9500821DB0C38B00659946 /* BaseTestViewController.m in Sources */,
 				8A61323D1DAB38170098158B /* AppDelegate.m in Sources */,
 				8A61323A1DAB38170098158B /* main.m in Sources */,
 			);
@@ -480,6 +514,7 @@
 					"$(PROJECT_DIR)/testProject",
 					../,
 				);
+				GCC_PREFIX_HEADER = "testProject/testProject-Prefix.pch";
 				INFOPLIST_FILE = testProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
@@ -502,6 +537,7 @@
 					"$(PROJECT_DIR)/testProject",
 					../,
 				);
+				GCC_PREFIX_HEADER = "testProject/testProject-Prefix.pch";
 				INFOPLIST_FILE = testProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;

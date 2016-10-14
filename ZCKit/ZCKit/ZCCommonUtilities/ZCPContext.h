@@ -23,6 +23,6 @@
 
 - (void)loadConfig:(id)config bundle:(NSBundle *) bundle;
 
-- (id) getViewController:(NSURL *) url;
++ (NSURL *)removeSchemeWithURL:(NSURL *)url;
 
 @end

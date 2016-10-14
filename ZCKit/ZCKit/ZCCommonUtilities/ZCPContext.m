@@ -75,6 +75,7 @@
     NSMutableArray * _serviceContainers;
     NSMutableDictionary * _focusValues;
     NSMutableArray * _viewControllers;
+    NSMutableArray * _waitCallbackObjects;
     NSBundle * _bundle;
 }
 
@@ -206,12 +207,11 @@ static ZCPContext * sharedInstance;
     return container;
 }
 
--(id) getViewController:(NSURL *) url
+-(id) getViewControllerForURL:(NSURL *) url
 {
+    NSString * urlScheme = [url scheme];
     if ([url scheme]) {
-        NSString * urlString = [url absoluteString];
-        NSString * schemeString = [url scheme];
-        url = [NSURL URLWithString:[urlString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@://", schemeString] withString:@""]];
+        url = [ZCPContext removeSchemeWithURL:url];
     }
     NSString * alias = [url firstPathComponent];
     id viewController = nil;
@@ -254,6 +254,9 @@ static ZCPContext * sharedInstance;
             
             [viewController setAlias:alias];
             [viewController setScheme:[cfg valueForKey:@"scheme"]];
+            if (![viewController scheme]) {
+                [viewController setScheme:urlScheme];
+            }
             [viewController setUrl:url];
             [viewController setConfig:cfg];
             
@@ -271,8 +274,59 @@ static ZCPContext * sharedInstance;
     return viewController;
 }
 
+- (id)getObjectForURL:(NSURL *)url object:(id)object
+{
+    id resultObject = nil;
+    id viewController = [self getViewControllerForURL:url];
+    if (viewController) {
+        NSURL * b_url = [ZCPContext removeSchemeWithURL:url];
+        SEL sel = NSSelectorFromString([b_url lastPathComponent]);
+        if ([viewController respondsToSelector:sel]) {
+            resultObject = [viewController performSelector:sel withObject:object];
+        }
+    }
+    return resultObject;
+}
+
+- (void)sendObjectURL:(NSURL *)url object:(id)object callback:(ZCViewConrollerCallback)callback
+{
+    id resultObject = nil;
+    id viewController = [self getViewControllerForURL:url];
+    if (viewController) {
+        if ([viewController isKindOfClass:[UIViewController class]]) {
+            [viewController view];
+        }
+        [viewController setViewControllerURLResultsCallback:callback];
+        if (!_waitCallbackObjects) {
+            _waitCallbackObjects = [[NSMutableArray alloc] initWithCapacity:0];
+        }
+        [_waitCallbackObjects addObject:viewController];
+        NSURL * b_url = [ZCPContext removeSchemeWithURL:url];
+        SEL sel = NSSelectorFromString([b_url lastPathComponent]);
+        if ([viewController respondsToSelector:sel]) {
+            [viewController performSelector:sel withObject:object];
+        }
+    }
+}
+
+- (void)finishSendObjectURLWithTarget:(id)target
+{
+    if ([_waitCallbackObjects containsObject:target]) {
+        [_waitCallbackObjects removeObject:target];
+    }
+}
+
 -(NSBundle *) resourceBundle{
     return _bundle;
+}
+
+#pragma mark - Add Method
++ (NSURL *)removeSchemeWithURL:(NSURL *)url
+{
+    NSString * urlString = [url absoluteString];
+    NSString * schemeString = [url scheme];
+    url = [NSURL URLWithString:[urlString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@://", schemeString] withString:@""]];
+    return url;
 }
 
 @end

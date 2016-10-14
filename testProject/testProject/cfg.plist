@@ -1289,6 +1289,25 @@
 			<key>scheme</key>
 			<string>root</string>
 		</dict>
+		<key>vc-a</key>
+		<dict>
+			<key>class</key>
+			<string>ViewController_A</string>
+			<key>view</key>
+			<string>ViewController_A</string>
+		</dict>
+		<key>vc-b</key>
+		<dict>
+			<key>class</key>
+			<string>ViewController_B</string>
+		</dict>
+		<key>vc-c</key>
+		<dict>
+			<key>class</key>
+			<string>ViewController_C</string>
+			<key>view</key>
+			<string>ViewController_C</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

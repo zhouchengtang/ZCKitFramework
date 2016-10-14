@@ -7,19 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef void ( ^ VTContextResultsCallback )(id resultsData,id sender);
+#import <ZCKit/IZCUIViewController.h>
 
 @protocol IZCContext <NSObject>
 
--(id) getViewController:(NSURL *) url basePath:(NSString *) basePath;
+/*
+ getViewControllerForURL
+ url 规则
+ push scheme://target?key=value&key1=value1
+ present present://target?key=value&key1=value1或present present://nav/target?key=value&key1=value1(如果路径中带nav则会创建带NavigationController的VC再present)
+ */
+- (id) getViewControllerForURL:(NSURL *) url;
 
--(id) focusValueForKey:(NSString *) key;
+//- (id) getViewControllerForURL:(NSURL *) url basePath:(NSString *) basePath;
+/*
+ getObjectForURL
+ url 规则 scheme://target/?key=value&key1=value1
+ object为调用方法参数
+ */
+- (id) getObjectForURL:(NSURL *)url object:(id)object;
 
--(void) setFocusValue:(id) value forKey:(NSString *) key;
+- (void) sendObjectURL:(NSURL *)url object:(id)object callback:(ZCViewConrollerCallback)callback;
 
--(id) rootViewController;
+- (void)finishSendObjectURLWithTarget:(id)target;
 
--(VTContextResultsCallback) resultsCallback;
+- (id) focusValueForKey:(NSString *) key;
+
+- (void) setFocusValue:(id) value forKey:(NSString *) key;
+
+- (id) rootViewController;
 
 @end

@@ -1,0 +1,14 @@
+//
+//  testProject-Prefix.pch
+//  testProject
+//
+//  Created by zhoucheng on 2016/10/14.
+//  Copyright © 2016年 zhoucheng. All rights reserved.
+//
+
+#ifndef testProject_Prefix_pch
+#define testProject_Prefix_pch
+
+#import "BaseTestViewController.h"
+
+#endif /* testProject_Prefix_pch */

@@ -17,6 +17,11 @@
 
 @implementation ViewController
 
+- (void)dealloc
+{
+    NSLog(@"ViewController dealloc");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _textView = [[ZCTextView alloc] initWithFrame:self.view.bounds];
@@ -34,12 +39,32 @@
     [tableDataController bottomLoadingViewWithStyle:ZCRefreshLoadingViewStyle_ActivityIndicatorSystem];
     [tableDataController notFoundDataWithAlertText:nil imageNamed:nil];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"测试" style:UIBarButtonItemStylePlain target:self action:@selector(testButtonClicked)];
+    UIBarButtonItem * push = [[UIBarButtonItem alloc] initWithTitle:@"push" style:UIBarButtonItemStylePlain target:self action:@selector(testButtonClicked)];
+    self.navigationItem.rightBarButtonItems = @[push];
+    self.navigationItem.hidesBackButton = YES;
+    
+    NSLog(@"%@", [[ZCPContext sharedInstance] getObjectForURL:[NSURL URLWithString:@"zckit://vc-a/testGetObjectWithURL:"] object:@{}]);
+}
+
+- (void)rootButtonClick
+{
+    [self openUrl:[NSURL URLWithString:@"pop://root"] animated:YES object:nil callback:nil];
 }
 
 - (void)testButtonClicked
 {
-    [self.navigationController pushViewController:[[ZCPContext sharedInstance] getViewController:[NSURL URLWithString:@"zckit://test/test"]] animated:true];
+    [self openUrl:[NSURL URLWithString:@"zckit://vc-a" queryValues:@{@"vid" : @"12345"}]
+         animated:YES
+           object:@{@"key1":@"value1", @"key2":@"value2"}
+         callback:^(id resultsData,id sender){
+             NSLog(@"%@", resultsData);
+             NSLog(@"%@", sender);
+    }];
+}
+
+- (void)reloadNetworkData
+{
+    [_urlDataSource reloadData];
 }
 
 - (void)ZCDataSourceDidLoadResultsData:(ZCURLDataSource *)dataSource
@@ -47,6 +72,9 @@
     NSLog(@"%@", dataSource.dataObject);
     NSString * dataObjectStr = [NSString stringWithFormat:@"%@", dataSource.dataObject];
     _textView.text = [dataObjectStr makeUnicodeToString];
+    if (self.viewControllerURLResultsCallback) {
+        self.viewControllerURLResultsCallback(dataSource.dataObject, self);
+    }
 }
 
 - (void)didReceiveMemoryWarning {
