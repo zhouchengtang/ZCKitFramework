@@ -276,6 +276,7 @@ static ZCPContext * sharedInstance;
 
 - (id)getObjectForURL:(NSURL *)url object:(id)object
 {
+    //逻辑有待优化，优先加载已存在内存中url对应class中的method，不存在则初始化再调用classMethod
     id resultObject = nil;
     id viewController = [self getViewControllerForURL:url];
     if (viewController) {
@@ -290,6 +291,7 @@ static ZCPContext * sharedInstance;
 
 - (void)sendObjectURL:(NSURL *)url object:(id)object callback:(ZCViewConrollerCallback)callback
 {
+    //逻辑有待优化，优先加载已存在内存中url对应class中的method，不存在则初始化再调用classMethod
     id resultObject = nil;
     id viewController = [self getViewControllerForURL:url];
     if (viewController) {
