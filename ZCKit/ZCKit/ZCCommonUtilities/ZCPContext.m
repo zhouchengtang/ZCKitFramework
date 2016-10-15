@@ -242,7 +242,13 @@ static ZCPContext * sharedInstance;
                 NSString * view = [platform valueForKey:@"view"];
                 
                 if([clazz isSubclassOfClass:[UIViewController class]] && view){
-                    viewController = [[clazz alloc] initWithNibName:view bundle:[self resourceBundle]];
+                    NSBundle * bundle = nil;
+                    if ([cfg objectForKey:@"bundle"]) {
+                        bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[cfg objectForKey:@"bundle"] ofType:@"bundle"]];
+                    }else{
+                        bundle = [self resourceBundle];
+                    }
+                    viewController = [[clazz alloc] initWithNibName:view bundle:bundle];
                 }
                 else{
                     viewController = [[clazz alloc] init];
