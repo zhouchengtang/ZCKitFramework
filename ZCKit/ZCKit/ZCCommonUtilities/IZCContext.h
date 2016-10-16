@@ -11,6 +11,8 @@
 
 @protocol IZCContext <NSObject>
 
+@property(nonatomic, strong)NSMutableArray * heapViewControllers;
+
 /*
  getViewControllerForURL
  url 规则

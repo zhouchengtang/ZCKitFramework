@@ -19,11 +19,13 @@
 - (NSDictionary *)parameters
 {
     NSMutableDictionary * parametersDictionary = [NSMutableDictionary dictionary];
-    NSArray * queryComponents = [self.query componentsSeparatedByString:@"&"];
-    for (NSString * queryComponent in queryComponents) {
-        NSString * key = [queryComponent componentsSeparatedByString:@"="].firstObject;
-        NSString * value = [queryComponent substringFromIndex:(key.length + 1)];
-        [parametersDictionary setObject:value forKey:key];
+    if (self.query && self.query.length > 0) {
+        NSArray * queryComponents = [self.query componentsSeparatedByString:@"&"];
+        for (NSString * queryComponent in queryComponents) {
+            NSString * key = [queryComponent componentsSeparatedByString:@"="].firstObject;
+            NSString * value = [queryComponent substringFromIndex:(key.length + 1)];
+            [parametersDictionary setObject:value forKey:key];
+        }
     }
     return parametersDictionary;
 }
@@ -43,7 +45,7 @@
     NSRange r = [URLString rangeOfString:@"?"];
     NSMutableString * ms = [NSMutableString stringWithCapacity:64];
     BOOL isFirst = NO;
-    if(r.location == NSNotFound){
+    if(r.location == NSNotFound && queryValues){
         [ms appendString:@"?"];
         isFirst = YES;
     }

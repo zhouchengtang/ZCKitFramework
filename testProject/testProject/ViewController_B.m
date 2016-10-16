@@ -58,13 +58,13 @@
     self.navigationItem.rightBarButtonItems = @[presentToC];
     
     UIBarButtonItem * popRoot = [[UIBarButtonItem alloc] initWithTitle:@"pop_root" style:UIBarButtonItemStylePlain target:self action:@selector(popToRoot)];
-    UIBarButtonItem * popToVc = [[UIBarButtonItem alloc] initWithTitle:@"pop_cva" style:UIBarButtonItemStylePlain target:self action:@selector(popToCustomVC)];
+    UIBarButtonItem * popToVc = [[UIBarButtonItem alloc] initWithTitle:@"pop_cv_root" style:UIBarButtonItemStylePlain target:self action:@selector(popToCustomVC)];
     self.navigationItem.leftBarButtonItems = @[popRoot, popToVc];
 }
 
 - (void)popToCustomVC
 {
-    [self openUrl:[NSURL URLWithString:@"pop://vc-a" queryValues:@{@"vid" : @"12345"}] animated:YES];
+    [self openUrl:[NSURL URLWithString:@"pop://test" queryValues:nil] animated:YES];
 }
 
 - (void)popToRoot

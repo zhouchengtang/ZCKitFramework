@@ -82,6 +82,9 @@
 @end
 
 @implementation ZCPContext
+
+@synthesize heapViewControllers = _heapViewControllers;
+
 #pragma mark - init method
 static ZCPContext * sharedInstance;
 
@@ -140,6 +143,14 @@ static ZCPContext * sharedInstance;
 }
 
 #pragma mark - context method
+- (NSMutableArray *)heapViewControllers
+{
+    if (!_heapViewControllers) {
+        _heapViewControllers = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return _heapViewControllers;
+}
+
 - (void)loadConfig:(id)config bundle:(NSBundle *)bundle
 {
     _config = config;

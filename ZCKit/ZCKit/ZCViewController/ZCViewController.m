@@ -272,7 +272,11 @@
 - (BOOL)openUrl:(NSURL *)url animated:(BOOL)animated object:(id)object callback:(ZCViewConrollerCallback)callback
 {
     NSString * scheme = [url scheme];
-    
+    /*
+    if (url.parameters.count <= 0 && [[url.absoluteString substringWithRange:NSMakeRange(url.absoluteString.length - 1, 1)] isEqualToString:@"?"]) {
+        url = [NSURL URLWithString:[url.absoluteString stringByReplacingCharactersInRange:NSMakeRange(url.absoluteString.length - 1, 1) withString:@""]];
+    }
+    */
     if ([[url absoluteString] isEqualToString:@"."]) {
         if ([self.scheme isEqualToString:@"present"]) {
             [self dismissViewControllerAnimated:animated completion:nil];
@@ -283,13 +287,13 @@
     }else if ([scheme isEqualToString:@"pop"]) {
         NSURL * b_url = [ZCPContext removeSchemeWithURL:url];
         if (b_url.pathComponents.count == 1 && [[b_url firstPathComponent] isEqualToString:@"root"]) {
-            [self.navigationController popToRootViewControllerAnimated:animated];
+            NSArray * popViewController = [self.navigationController popToRootViewControllerAnimated:animated];
             return YES;
         }else{
-            for (NSInteger i = self.navigationController.viewControllers.count - 1; i > -1 ; i--) {
+            for (NSInteger i = self.navigationController.viewControllers.count - 1; i >= 0 ; i--) {
                 id viewController = [self.navigationController.viewControllers objectAtIndex:i];
                 if ([[[viewController url] absoluteString] isEqualToString:[b_url absoluteString]]) {
-                    [self.navigationController popToViewController:viewController animated:animated];
+                    NSArray * popViewController = [self.navigationController popToViewController:viewController animated:animated];
                     return YES;
                 }
             }
