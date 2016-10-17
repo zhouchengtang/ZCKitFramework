@@ -60,6 +60,14 @@
     UIBarButtonItem * popRoot = [[UIBarButtonItem alloc] initWithTitle:@"pop_root" style:UIBarButtonItemStylePlain target:self action:@selector(popToRoot)];
     UIBarButtonItem * popToVc = [[UIBarButtonItem alloc] initWithTitle:@"pop_cv_root" style:UIBarButtonItemStylePlain target:self action:@selector(popToCustomVC)];
     self.navigationItem.leftBarButtonItems = @[popRoot, popToVc];
+    
+    [[ZCPContext sharedInstance] sendObjectURL:[NSURL URLWithString:@"value://test/reloadNetworkData"]
+                                        object:nil
+                                      callback:^(id resultsData,id sender){
+                                          NSLog(@"%@", resultsData);
+                                          [[ZCPContext sharedInstance] finishSendObjectURLWithTarget:sender];
+                                          
+                                      }];
 }
 
 - (void)popToCustomVC

@@ -25,7 +25,9 @@ typedef void ( ^ ZCViewConrollerCallback )(id resultsData,id sender);
 
 /*
  url 规则
- push scheme://target?key=value&key1=value1
+ scheme如果需要进行相应才做则需要进行指定(root,push,present,pop)
+ root root://target?key=value&key1=value1为程序的根视图
+ push push://target?key=value&key1=value1
  pop  返回上一级为".",返回某一级为pop://push路径 返回root为pop://root
  present present://target?key=value&key1=value1或present present://nav/target?key=value&key1=value1(如果路径中带nav则会创建带NavigationController的VC再present)
  */

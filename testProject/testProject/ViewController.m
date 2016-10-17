@@ -42,8 +42,6 @@
     UIBarButtonItem * push = [[UIBarButtonItem alloc] initWithTitle:@"push" style:UIBarButtonItemStylePlain target:self action:@selector(testButtonClicked)];
     self.navigationItem.rightBarButtonItems = @[push];
     self.navigationItem.hidesBackButton = YES;
-    
-    NSLog(@"%@", [[ZCPContext sharedInstance] getObjectForURL:[NSURL URLWithString:@"zckit://vc-a/testGetObjectWithURL:"] object:@{}]);
 }
 
 - (void)rootButtonClick
@@ -53,7 +51,7 @@
 
 - (void)testButtonClicked
 {
-    [self openUrl:[NSURL URLWithString:@"zckit://vc-a" queryValues:@{@"vid" : @"12345"}]
+    [self openUrl:[NSURL URLWithString:@"push://vc-a" queryValues:@{@"vid" : @"12345"}]
          animated:YES
            object:@{@"key1":@"value1", @"key2":@"value2"}
          callback:^(id resultsData,id sender){

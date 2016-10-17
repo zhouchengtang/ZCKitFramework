@@ -21,19 +21,11 @@
     // Do any additional setup after loading the view from its nib.
     UIBarButtonItem * push = [[UIBarButtonItem alloc] initWithTitle:@"push_vb" style:UIBarButtonItemStylePlain target:self action:@selector(pushToB)];
     self.navigationItem.rightBarButtonItems = @[push];
-    
-    [[ZCPContext sharedInstance] sendObjectURL:[NSURL URLWithString:@"zckit://test/reloadNetworkData"]
-                                        object:nil
-                                      callback:^(id resultsData,id sender){
-                                          NSLog(@"%@", resultsData);
-                                          [[ZCPContext sharedInstance] finishSendObjectURLWithTarget:sender];
-    
-    }];
 }
 
 - (void)pushToB
 {
-    [self openUrl:[NSURL URLWithString:@"zckit://vc-b"] animated:YES object:nil callback:nil];
+    [self openUrl:[NSURL URLWithString:@"push://vc-b"] animated:YES object:nil callback:nil];
 }
 
 - (id)testGetObjectWithURL

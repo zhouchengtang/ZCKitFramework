@@ -283,6 +283,9 @@ static ZCPContext * sharedInstance;
                 }
                 [_viewControllers addObject:viewController];
             }
+            if ([urlScheme isEqualToString:@"root"] || [urlScheme isEqualToString:@"push"] || [urlScheme isEqualToString:@"present"]) {
+                [self.heapViewControllers addObject:viewController];
+            }
         }
         
         return viewController;
@@ -295,7 +298,13 @@ static ZCPContext * sharedInstance;
 {
     //逻辑有待优化，优先加载已存在内存中url对应class中的method，不存在则初始化再调用classMethod
     id resultObject = nil;
-    id viewController = [self getViewControllerForURL:url];
+    id viewController = [self heapViewControllerContainsObjectWithURL:[ZCPContext removeActionWithURL:[ZCPContext removeSchemeWithURL:url]]];
+    if (!viewController) {
+        viewController = [self getViewControllerForURL:[ZCPContext removeActionWithURL:url]];
+        if ([viewController isKindOfClass:[UIViewController class]]) {
+            [viewController view];
+        }
+    }
     if (viewController) {
         NSURL * b_url = [ZCPContext removeSchemeWithURL:url];
         SEL sel = NSSelectorFromString([b_url lastPathComponent]);
@@ -310,11 +319,14 @@ static ZCPContext * sharedInstance;
 {
     //逻辑有待优化，优先加载已存在内存中url对应class中的method，不存在则初始化再调用classMethod
     id resultObject = nil;
-    id viewController = [self getViewControllerForURL:url];
-    if (viewController) {
-        if ([viewController isKindOfClass:[UIViewController class]]) {
+    id viewController =  [self heapViewControllerContainsObjectWithURL:[ZCPContext removeActionWithURL:[ZCPContext removeSchemeWithURL:url]]];
+    if (!viewController) {
+        viewController = [self getViewControllerForURL:[ZCPContext removeActionWithURL:url]];
+        if (viewController &&[viewController isKindOfClass:[UIViewController class]]) {
             [viewController view];
         }
+    }
+    if (viewController) {
         [viewController setViewControllerURLResultsCallback:callback];
         if (!_waitCallbackObjects) {
             _waitCallbackObjects = [[NSMutableArray alloc] initWithCapacity:0];
@@ -339,12 +351,50 @@ static ZCPContext * sharedInstance;
     return _bundle;
 }
 
+#pragma mark - removeHeapViewControllerObjects
+- (void)removeHeapViewControllersObject:(id)object
+{
+    if ([object isKindOfClass:[NSArray class]]) {
+        for (id viewController in object) {
+            if ([[ZCPContext sharedInstance].heapViewControllers containsObject:viewController]) {
+                [[ZCPContext sharedInstance].heapViewControllers removeObject:viewController];
+            }
+        }
+    }else{
+        if ([[ZCPContext sharedInstance].heapViewControllers containsObject:object]) {
+            [[ZCPContext sharedInstance].heapViewControllers removeObject:object];
+        }
+    }
+}
+
+#pragma mark - heapViewControllsHasThisObject
+- (id)heapViewControllerContainsObjectWithURL:(NSURL *)url
+{
+    for (id object in self.heapViewControllers) {
+        if ([[object url].absoluteString isEqualToString:url.absoluteString] ) {
+            return object;
+        }
+    }
+    return nil;
+}
+
 #pragma mark - Add Method
 + (NSURL *)removeSchemeWithURL:(NSURL *)url
 {
     NSString * urlString = [url absoluteString];
     NSString * schemeString = [url scheme];
     url = [NSURL URLWithString:[urlString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@://", schemeString] withString:@""]];
+    return url;
+}
+
++ (NSURL *)removeActionWithURL:(NSURL *)url
+{
+    NSString * urlScheme = [url scheme];
+    url = [self removeSchemeWithURL:url];
+    url = [NSURL URLWithString:[url.absoluteString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"/%@", url.lastPathComponent] withString:@""]];
+    if (urlScheme) {
+        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@", urlScheme, url.absoluteString]];
+    }
     return url;
 }
 

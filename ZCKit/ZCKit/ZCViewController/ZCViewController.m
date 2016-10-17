@@ -280,20 +280,24 @@
     if ([[url absoluteString] isEqualToString:@"."]) {
         if ([self.scheme isEqualToString:@"present"]) {
             [self dismissViewControllerAnimated:animated completion:nil];
+            [[ZCPContext sharedInstance] removeHeapViewControllersObject:self];
         }else{
-            [self.navigationController popViewControllerAnimated:animated];
+            id viewController = [self.navigationController popViewControllerAnimated:animated];
+            [[ZCPContext sharedInstance] removeHeapViewControllersObject:viewController];
         }
         return YES;
     }else if ([scheme isEqualToString:@"pop"]) {
         NSURL * b_url = [ZCPContext removeSchemeWithURL:url];
         if (b_url.pathComponents.count == 1 && [[b_url firstPathComponent] isEqualToString:@"root"]) {
-            NSArray * popViewController = [self.navigationController popToRootViewControllerAnimated:animated];
+            NSArray * popViewControllers = [self.navigationController popToRootViewControllerAnimated:animated];
+            [[ZCPContext sharedInstance] removeHeapViewControllersObject:popViewControllers];
             return YES;
         }else{
             for (NSInteger i = self.navigationController.viewControllers.count - 1; i >= 0 ; i--) {
                 id viewController = [self.navigationController.viewControllers objectAtIndex:i];
                 if ([[[viewController url] absoluteString] isEqualToString:[b_url absoluteString]]) {
-                    NSArray * popViewController = [self.navigationController popToViewController:viewController animated:animated];
+                    NSArray * popViewControllers = [self.navigationController popToViewController:viewController animated:animated];
+                    [[ZCPContext sharedInstance] removeHeapViewControllersObject:popViewControllers];
                     return YES;
                 }
             }
@@ -338,7 +342,6 @@
             return YES;
         }
     }
-    
     return NO;
 }
 

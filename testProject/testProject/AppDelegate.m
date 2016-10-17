@@ -22,7 +22,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setBackgroundColor:[UIColor whiteColor]];
-    UINavigationController * nav = [[ZCNavigationController alloc] initWithRootViewController:[[ZCPContext sharedInstance] getViewControllerForURL:[NSURL URLWithString:@"zckit://test"]]];
+    UINavigationController * nav = [[ZCNavigationController alloc] initWithRootViewController:[[ZCPContext sharedInstance] getViewControllerForURL:[NSURL URLWithString:@"root://test"]]];
     self.window.rootViewController = nav;
     
     ZCBaseModel * model = [[ZCBaseModel alloc] init];
