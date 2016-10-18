@@ -226,6 +226,7 @@ FOUNDATION_EXPORT const unsigned char ZCKitVersionString[];
 #import <ZCKit/ZC_FLAnimatedImage.h>
 
 #import <ZCKit/ZCPContext.h>
+#import <ZCKit/ZCRegisterObject.h>
 //protocol
 #import <ZCKit/IZCAction.h>
 #import <ZCKit/IZCContext.h>
@@ -235,6 +236,7 @@ FOUNDATION_EXPORT const unsigned char ZCKitVersionString[];
 #import <ZCKit/IZCServiceContainer.h>
 #import <ZCKit/IZCService.h>
 #import <ZCKit/IZCUIViewController.h>
+#import <ZCKit/IZCRegisterObject.h>
 
 
 

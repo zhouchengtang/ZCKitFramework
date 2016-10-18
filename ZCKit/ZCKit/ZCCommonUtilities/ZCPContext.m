@@ -83,7 +83,7 @@
 
 @implementation ZCPContext
 
-@synthesize heapViewControllers = _heapViewControllers;
+@synthesize registerObjects = _registerObjects;
 
 #pragma mark - init method
 static ZCPContext * sharedInstance;
@@ -145,10 +145,10 @@ static ZCPContext * sharedInstance;
 #pragma mark - context method
 - (NSMutableArray *)heapViewControllers
 {
-    if (!_heapViewControllers) {
-        _heapViewControllers = [[NSMutableArray alloc] initWithCapacity:0];
+    if (!_registerObjects) {
+        _registerObjects = [[NSMutableArray alloc] initWithCapacity:0];
     }
-    return _heapViewControllers;
+    return _registerObjects;
 }
 
 - (void)loadConfig:(id)config bundle:(NSBundle *)bundle
@@ -221,10 +221,7 @@ static ZCPContext * sharedInstance;
 -(id) getViewControllerForURL:(NSURL *) url
 {
     NSString * urlScheme = [url scheme];
-    if ([url scheme]) {
-        url = [ZCPContext removeSchemeWithURL:url];
-    }
-    NSString * alias = [url firstPathComponent];
+    NSString * alias = [[ZCPContext removeSchemeWithURL:url] firstPathComponent];
     id viewController = nil;
     id cfg = [[_config valueForKey:@"ui"] valueForKey:alias];
     if(cfg){
@@ -233,72 +230,111 @@ static ZCPContext * sharedInstance;
         if(cached){
             for(id viewController in _viewControllers){
                 if([[viewController alias] isEqualToString:alias] && [viewController isDisplaced]){
-                    [viewController setUrl:url];
+                    [viewController setUrl:[ZCPContext removeActionWithURL:url]];
                     return viewController;
                 }
             }
         }
         
-        id platform = cfg;
+        id viewController = [self getObjectWithCfg:cfg url:url];
         
-        
-        id viewController = nil;
-        
-        NSString * className = [platform valueForKey:@"class"];
-        
-        if(className){
-            Class clazz = NSClassFromString(className);
-            if([clazz conformsToProtocol:@protocol(IZCUIViewController)]){
-                
-                NSString * view = [platform valueForKey:@"view"];
-                
-                if([clazz isSubclassOfClass:[UIViewController class]] && view){
-                    NSBundle * bundle = nil;
-                    if ([cfg objectForKey:@"bundle"]) {
-                        bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[cfg objectForKey:@"bundle"] ofType:@"bundle"]];
-                    }else{
-                        bundle = [self resourceBundle];
-                    }
-                    viewController = [[clazz alloc] initWithNibName:view bundle:bundle];
-                }
-                else{
-                    viewController = [[clazz alloc] init];
-                }
-            }
-        }
-        
-        if(viewController){
-            
-            [viewController setAlias:alias];
-            [viewController setScheme:[cfg valueForKey:@"scheme"]];
-            if (![viewController scheme]) {
-                [viewController setScheme:urlScheme];
-            }
-            [viewController setUrl:url];
-            [viewController setConfig:cfg];
-            
+        if (viewController && [viewController conformsToProtocol:@protocol(IZCUIViewController) ]) {
             if(cached){
                 if(_viewControllers == nil){
                     _viewControllers = [[NSMutableArray alloc] initWithCapacity:4];
                 }
                 [_viewControllers addObject:viewController];
             }
-            if ([urlScheme isEqualToString:@"root"] || [urlScheme isEqualToString:@"push"] || [urlScheme isEqualToString:@"present"]) {
-                [self.heapViewControllers addObject:viewController];
-            }
         }
-        
         return viewController;
     }
     
     return viewController;
 }
 
-- (id)getObjectForURL:(NSURL *)url object:(id)object
+- (id)getObjectWithCfg:(id)cfg url:(NSURL *)url
 {
-    //逻辑有待优化，优先加载已存在内存中url对应class中的method，不存在则初始化再调用classMethod
+    id platform = cfg;
+    
+    id object = nil;
+    
+    NSString * className = [platform valueForKey:@"class"];
+    
+    if(className){
+        Class clazz = NSClassFromString(className);
+        if([clazz conformsToProtocol:@protocol(IZCRegisterObject)]){
+            
+            NSString * view = [platform valueForKey:@"view"];
+            
+            if([clazz isSubclassOfClass:[UIViewController class]] && view){
+                NSBundle * bundle = nil;
+                if ([cfg objectForKey:@"bundle"]) {
+                    bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:[cfg objectForKey:@"bundle"] ofType:@"bundle"]];
+                }else{
+                    bundle = [self resourceBundle];
+                }
+                object = [[clazz alloc] initWithNibName:view bundle:bundle];
+            }
+            else{
+                object = [[clazz alloc] init];
+            }
+        }
+    }
+
+    if(object){
+        
+        [object setAlias:[[ZCPContext removeActionWithURL:url] firstPathComponent]];
+        [object setScheme:[cfg valueForKey:@"scheme"]];
+        if (![object scheme]) {
+            [object setScheme:[url scheme]];
+        }
+        [object setUrl:[ZCPContext removeSchemeWithURL:url]];
+        [object setConfig:cfg];
+        
+        if ([[url scheme] isEqualToString:@"root"] || [[url scheme] isEqualToString:@"push"] || [[url scheme] isEqualToString:@"present"]) {
+            [self.heapViewControllers addObject:object];
+        }
+    }
+    return object;
+}
+
+- (BOOL)registerObjectForURL:(NSURL *)url
+{
+#warning 需要优化如何删除重复注册问题
+    NSString * urlScheme = [url scheme];
+    NSString * alias = [[ZCPContext removeSchemeWithURL:url] firstPathComponent];
+    id cfg = [[_config valueForKey:@"register"] valueForKey:alias];
+    if (cfg) {
+        id object = [self getObjectWithCfg:cfg url:url];
+        if (object) {
+            [self.registerObjects addObject:object];
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (BOOL)resignObjectForURL:(NSURL *)url
+{
+    id registerObject = nil;
+    for (id object in self.registerObjects) {
+        if ([[object url].absoluteString isEqualToString:[ZCPContext removeSchemeWithURL:url].absoluteString]) {
+            registerObject = object;
+            break;
+        }
+    }
+    if (registerObject) {
+        [self.registerObjects removeObject:registerObject];
+        return YES;
+    }
+    return NO;
+}
+
+- (id)getValueForRegisterObjectURL:(NSURL *)url object:(id)object
+{
+#warning 需要考虑在未注册情况下是否自动初始化问题
     id resultObject = nil;
-    id viewController = [self heapViewControllerContainsObjectWithURL:[ZCPContext removeActionWithURL:[ZCPContext removeSchemeWithURL:url]]];
+    id viewController = [self registerObjectsContainsObjectWithURL:[ZCPContext removeActionWithURL:[ZCPContext removeSchemeWithURL:url]]];
     if (!viewController) {
         viewController = [self getViewControllerForURL:[ZCPContext removeActionWithURL:url]];
         if ([viewController isKindOfClass:[UIViewController class]]) {
@@ -315,11 +351,11 @@ static ZCPContext * sharedInstance;
     return resultObject;
 }
 
-- (void)sendObjectURL:(NSURL *)url object:(id)object callback:(ZCViewConrollerCallback)callback
+- (void)sendRegisterObjectURL:(NSURL *)url object:(id)object callback:(ZCViewConrollerCallback)callback
 {
-    //逻辑有待优化，优先加载已存在内存中url对应class中的method，不存在则初始化再调用classMethod
+#warning 需要考虑在未注册情况下是否自动初始化问题
     id resultObject = nil;
-    id viewController =  [self heapViewControllerContainsObjectWithURL:[ZCPContext removeActionWithURL:[ZCPContext removeSchemeWithURL:url]]];
+    id viewController =  [self registerObjectsContainsObjectWithURL:[ZCPContext removeActionWithURL:[ZCPContext removeSchemeWithURL:url]]];
     if (!viewController) {
         viewController = [self getViewControllerForURL:[ZCPContext removeActionWithURL:url]];
         if (viewController &&[viewController isKindOfClass:[UIViewController class]]) {
@@ -327,7 +363,7 @@ static ZCPContext * sharedInstance;
         }
     }
     if (viewController) {
-        [viewController setViewControllerURLResultsCallback:callback];
+        [viewController setObjectURLResultsCallback:callback];
         if (!_waitCallbackObjects) {
             _waitCallbackObjects = [[NSMutableArray alloc] initWithCapacity:0];
         }
@@ -352,7 +388,7 @@ static ZCPContext * sharedInstance;
 }
 
 #pragma mark - removeHeapViewControllerObjects
-- (void)removeHeapViewControllersObject:(id)object
+- (void)removeRegisterObject:(id)object
 {
     if ([object isKindOfClass:[NSArray class]]) {
         for (id viewController in object) {
@@ -368,7 +404,7 @@ static ZCPContext * sharedInstance;
 }
 
 #pragma mark - heapViewControllsHasThisObject
-- (id)heapViewControllerContainsObjectWithURL:(NSURL *)url
+- (id)registerObjectsContainsObjectWithURL:(NSURL *)url
 {
     for (id object in self.heapViewControllers) {
         if ([[object url].absoluteString isEqualToString:url.absoluteString] ) {

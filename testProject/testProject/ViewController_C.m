@@ -23,7 +23,7 @@
     UIBarButtonItem * done = [[UIBarButtonItem alloc] initWithTitle:@"done" style:UIBarButtonItemStylePlain target:self action:@selector(done)];
     self.navigationItem.leftBarButtonItems = @[done];
     
-    NSLog(@"%@", [[ZCPContext sharedInstance] getObjectForURL:[NSURL URLWithString:@"value://vc-a/testGetObjectWithURL"queryValues:@{@"vid" : @"12345"}] object:@{}]);
+    NSLog(@"%@", [[ZCPContext sharedInstance] getValueForRegisterObjectURL:[NSURL URLWithString:@"value://vc-a/testGetObjectWithURL"queryValues:@{@"vid" : @"12345"}] object:@{}]);
 }
 
 - (void)popToA

@@ -1309,5 +1309,13 @@
 			<string>ViewController_C</string>
 		</dict>
 	</dict>
+	<key>register</key>
+	<dict>
+		<key>r_test_1</key>
+		<dict>
+			<key>class</key>
+			<string>TestRegisterObject_1</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

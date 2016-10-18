@@ -7,21 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <ZCKit/IZCRegisterObject.h>
 
 typedef void ( ^ ZCViewConrollerCallback )(id resultsData,id sender);
 
-@protocol IZCUIViewController <NSObject>
+@protocol IZCUIViewController <IZCRegisterObject>
 
 @property(nonatomic,weak) id parentController;
 @property(nonatomic,readonly) id topController;
 @property(nonatomic,readonly) BOOL isDisplaced;
-@property(nonatomic,strong) id config;
-@property(nonatomic,strong) NSString * alias;
-@property(nonatomic,strong) NSURL * url;
-@property(nonatomic,strong) NSString * scheme;
-@property(nonatomic,strong) id parameterObject;
 @property(nonatomic, copy) ZCViewConrollerCallback viewControllerCallback;
-@property(nonatomic, copy) ZCViewConrollerCallback viewControllerURLResultsCallback;
 
 /*
  url 规则

@@ -344,6 +344,9 @@
 		8C0C05F31DAD2D0E00439B3F /* ZCNoMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C05F11DAD2D0E00439B3F /* ZCNoMessageView.m */; };
 		8C0C05F71DAD2D2800439B3F /* ZCTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C0C05F51DAD2D2800439B3F /* ZCTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C0C05F81DAD2D2800439B3F /* ZCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C0C05F61DAD2D2800439B3F /* ZCTextView.m */; };
+		8C325D2E1DB6634C00C8801D /* IZCRegisterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C325D341DB6877200C8801D /* ZCRegisterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C325D321DB6877200C8801D /* ZCRegisterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C325D351DB6877200C8801D /* ZCRegisterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C325D331DB6877200C8801D /* ZCRegisterObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -686,6 +689,9 @@
 		8C0C05F11DAD2D0E00439B3F /* ZCNoMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCNoMessageView.m; sourceTree = "<group>"; };
 		8C0C05F51DAD2D2800439B3F /* ZCTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTextView.h; sourceTree = "<group>"; };
 		8C0C05F61DAD2D2800439B3F /* ZCTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTextView.m; sourceTree = "<group>"; };
+		8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCRegisterObject.h; sourceTree = "<group>"; };
+		8C325D321DB6877200C8801D /* ZCRegisterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterObject.h; sourceTree = "<group>"; };
+		8C325D331DB6877200C8801D /* ZCRegisterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1610,6 +1616,9 @@
 				8A1247361DAF545200F2DA9C /* IZCServiceContainer.h */,
 				8A1247381DAF579E00F2DA9C /* IZCService.h */,
 				8A12473A1DAF93F800F2DA9C /* IZCUIViewController.h */,
+				8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */,
+				8C325D321DB6877200C8801D /* ZCRegisterObject.h */,
+				8C325D331DB6877200C8801D /* ZCRegisterObject.m */,
 			);
 			path = ZCCommonUtilities;
 			sourceTree = "<group>";
@@ -1643,6 +1652,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C325D341DB6877200C8801D /* ZCRegisterObject.h in Headers */,
+				8C325D2E1DB6634C00C8801D /* IZCRegisterObject.h in Headers */,
 				8A04C9721DAF361F00BE9869 /* ZCPContext.h in Headers */,
 				8A1247391DAF579E00F2DA9C /* IZCService.h in Headers */,
 				8A12473B1DAF93F800F2DA9C /* IZCUIViewController.h in Headers */,
@@ -1952,6 +1963,7 @@
 				8C0C05EF1DAD2B3400439B3F /* ZCRefreshTableDataController.m in Sources */,
 				8A7A5E191DACC93100394E43 /* ZC_SDImageCache.m in Sources */,
 				8A61343C1DAB3FE20098158B /* UIFont+ZCUtilities.m in Sources */,
+				8C325D351DB6877200C8801D /* ZCRegisterObject.m in Sources */,
 				8A6134B31DAB3FE20098158B /* ZCSelectPickerView.m in Sources */,
 				8A61349A1DAB3FE20098158B /* NSString+ZCDOMSource.m in Sources */,
 				8A6133E01DAB3FE20098158B /* NSDate+ZCUtilities.m in Sources */,

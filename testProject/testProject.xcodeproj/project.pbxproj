@@ -26,6 +26,7 @@
 		8AE830171DAB6EFB00925410 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A55CAF01DAB44B60047CEFD /* SystemConfiguration.framework */; };
 		8AE830181DAB6F0200925410 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A55CAEE1DAB44B00047CEFD /* libc++.tbd */; };
 		8AE830191DAB6F0C00925410 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A55CAEC1DAB44A80047CEFD /* libz.tbd */; };
+		8C325D381DB6888B00C8801D /* TestRegisterObject_1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C325D371DB6888B00C8801D /* TestRegisterObject_1.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		8A9500801DB0C38B00659946 /* BaseTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTestViewController.h; sourceTree = "<group>"; };
 		8A9500811DB0C38B00659946 /* BaseTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTestViewController.m; sourceTree = "<group>"; };
 		8A9500831DB0C3CE00659946 /* testProject-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testProject-Prefix.pch"; sourceTree = "<group>"; };
+		8C325D361DB6888B00C8801D /* TestRegisterObject_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRegisterObject_1.h; sourceTree = "<group>"; };
+		8C325D371DB6888B00C8801D /* TestRegisterObject_1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRegisterObject_1.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				8A7A5E361DACCB3600394E43 /* ZCKit.xcodeproj */,
 				8A61323B1DAB38170098158B /* AppDelegate.h */,
 				8A61323C1DAB38170098158B /* AppDelegate.m */,
+				8C325D361DB6888B00C8801D /* TestRegisterObject_1.h */,
+				8C325D371DB6888B00C8801D /* TestRegisterObject_1.m */,
 				8A9500801DB0C38B00659946 /* BaseTestViewController.h */,
 				8A9500811DB0C38B00659946 /* BaseTestViewController.m */,
 				8A61323E1DAB38170098158B /* ViewController.h */,
@@ -368,6 +373,7 @@
 				8A9500751DB0A8EC00659946 /* ViewController_A.m in Sources */,
 				8A6132401DAB38170098158B /* ViewController.m in Sources */,
 				8A9500821DB0C38B00659946 /* BaseTestViewController.m in Sources */,
+				8C325D381DB6888B00C8801D /* TestRegisterObject_1.m in Sources */,
 				8A61323D1DAB38170098158B /* AppDelegate.m in Sources */,
 				8A61323A1DAB38170098158B /* main.m in Sources */,
 			);

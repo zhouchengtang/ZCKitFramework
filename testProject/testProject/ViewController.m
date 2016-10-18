@@ -42,6 +42,20 @@
     UIBarButtonItem * push = [[UIBarButtonItem alloc] initWithTitle:@"push" style:UIBarButtonItemStylePlain target:self action:@selector(testButtonClicked)];
     self.navigationItem.rightBarButtonItems = @[push];
     self.navigationItem.hidesBackButton = YES;
+    
+    if ([[ZCPContext sharedInstance] registerObjectForURL:[NSURL URLWithString:@"register://r_test_1"]]) {
+        NSLog(@"%@", [[ZCPContext sharedInstance] getValueForRegisterObjectURL:[NSURL URLWithString:@"register://r_test_1/getCurrentCalssName"] object:nil]);
+        NSLog(@"%@", [[ZCPContext sharedInstance] getValueForRegisterObjectURL:[NSURL URLWithString:@"register://r_test_1/getValueForObject:"] object:@{@"key":@"value"}]);
+        [[ZCPContext sharedInstance] sendRegisterObjectURL:[NSURL URLWithString:@"register://r_test_1/reloadURLWithURLString:"] object:@"http://platform.sina.com.cn/client/getHotBlogger?app_key=4135432745&deviceid=11111" callback:^(id result, id sender){
+            NSLog(@"%@", result);
+            NSLog(@"%@", sender);
+        }];
+        [[ZCPContext sharedInstance] sendRegisterObjectURL:[NSURL URLWithString:@"register://r_test_1/reloadURLDefaultWithURL"] object:nil callback:^(id result, id sender){
+            NSLog(@"%@", result);
+            NSLog(@"%@", sender);
+        }];
+    }
+    [[ZCPContext sharedInstance] resignObjectForURL:[NSURL URLWithString:@"register://r_test_1"]];
 }
 
 - (void)rootButtonClick
@@ -70,8 +84,8 @@
     NSLog(@"%@", dataSource.dataObject);
     NSString * dataObjectStr = [NSString stringWithFormat:@"%@", dataSource.dataObject];
     _textView.text = [dataObjectStr makeUnicodeToString];
-    if (self.viewControllerURLResultsCallback) {
-        self.viewControllerURLResultsCallback(dataSource.dataObject, self);
+    if (self.objectURLResultsCallback) {
+        self.objectURLResultsCallback(dataSource.dataObject, self);
     }
 }
 

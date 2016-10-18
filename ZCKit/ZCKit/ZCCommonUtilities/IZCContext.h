@@ -11,9 +11,9 @@
 
 @protocol IZCContext <NSObject>
 
-@property(nonatomic, strong)NSMutableArray * heapViewControllers;
+@property(nonatomic, strong, readonly)NSMutableArray * registerObjects;
 
-- (void)removeHeapViewControllersObject:(id)object;//删除存放在heapViewControllers中的object
+- (void)removeRegisterObject:(id)object;//删除存放在heapViewControllers中的object
 /*
  getViewControllerForURL
  url 规则
@@ -22,6 +22,10 @@
  push push://target?key=value&key1=value1
  present present://target?key=value&key1=value1或present present://nav/target?key=value&key1=value1(如果路径中带nav则会创建带NavigationController的VC再present)
  */
+- (BOOL) registerObjectForURL:(NSURL *)url;
+
+- (BOOL)resignObjectForURL:(NSURL *)url;
+
 - (id) getViewControllerForURL:(NSURL *) url;
 
 //- (id) getViewControllerForURL:(NSURL *) url basePath:(NSString *) basePath;
@@ -30,9 +34,9 @@
  url 规则 value://target/?key=value&key1=value1
  object为调用方法参数
  */
-- (id) getObjectForURL:(NSURL *)url object:(id)object;
+- (id) getValueForRegisterObjectURL:(NSURL *)url object:(id)object;
 
-- (void) sendObjectURL:(NSURL *)url object:(id)object callback:(ZCViewConrollerCallback)callback;
+- (void) sendRegisterObjectURL:(NSURL *)url object:(id)object callback:(ZCViewConrollerCallback)callback;
 
 - (void)finishSendObjectURLWithTarget:(id)target;
 

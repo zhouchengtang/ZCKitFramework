@@ -41,7 +41,7 @@
 @synthesize scheme = _scheme;
 @synthesize controllers = _controllers;
 @synthesize viewControllerCallback = _viewControllerCallback;
-@synthesize viewControllerURLResultsCallback = _viewControllerURLResultsCallback;
+@synthesize objectURLResultsCallback = _objectURLResultsCallback;
 @synthesize parameterObject = _parameterObject;
 
 -(BOOL)shouldAutorotate
@@ -66,7 +66,9 @@
     return self;
 }
 
-
+-(BOOL) isDisplaced{
+    return _parentController == nil && ( ![self isViewLoaded] || self.view.superview == nil);
+}
 
 #pragma mark - WaitingViewMethod
 
@@ -280,24 +282,24 @@
     if ([[url absoluteString] isEqualToString:@"."]) {
         if ([self.scheme isEqualToString:@"present"]) {
             [self dismissViewControllerAnimated:animated completion:nil];
-            [[ZCPContext sharedInstance] removeHeapViewControllersObject:self];
+            [[ZCPContext sharedInstance] removeRegisterObject:self];
         }else{
             id viewController = [self.navigationController popViewControllerAnimated:animated];
-            [[ZCPContext sharedInstance] removeHeapViewControllersObject:viewController];
+            [[ZCPContext sharedInstance] removeRegisterObject:viewController];
         }
         return YES;
     }else if ([scheme isEqualToString:@"pop"]) {
         NSURL * b_url = [ZCPContext removeSchemeWithURL:url];
         if (b_url.pathComponents.count == 1 && [[b_url firstPathComponent] isEqualToString:@"root"]) {
             NSArray * popViewControllers = [self.navigationController popToRootViewControllerAnimated:animated];
-            [[ZCPContext sharedInstance] removeHeapViewControllersObject:popViewControllers];
+            [[ZCPContext sharedInstance] removeRegisterObject:popViewControllers];
             return YES;
         }else{
             for (NSInteger i = self.navigationController.viewControllers.count - 1; i >= 0 ; i--) {
                 id viewController = [self.navigationController.viewControllers objectAtIndex:i];
                 if ([[[viewController url] absoluteString] isEqualToString:[b_url absoluteString]]) {
                     NSArray * popViewControllers = [self.navigationController popToViewController:viewController animated:animated];
-                    [[ZCPContext sharedInstance] removeHeapViewControllersObject:popViewControllers];
+                    [[ZCPContext sharedInstance] removeRegisterObject:popViewControllers];
                     return YES;
                 }
             }
