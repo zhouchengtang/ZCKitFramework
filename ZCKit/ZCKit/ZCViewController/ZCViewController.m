@@ -353,6 +353,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - 
+-(BOOL)navigationShouldPopOnBackButton;
+{
+    [self openUrl:[NSURL URLWithString:@"."] animated:YES];
+    return NO;
+}
+
 /*
  #pragma mark - Navigation
  

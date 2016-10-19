@@ -137,6 +137,7 @@ FOUNDATION_EXPORT const unsigned char ZCKitVersionString[];
 #import <ZCKit/UIViewController+ZCVisible.h>
 #import <ZCKit/UIViewController+ZCStoreKit.h>
 #import <ZCKit/UIViewController+ZCBackButtonItemTitle.h>
+#import <ZCKit/UIViewController+ZCSystemBackButtonHandler.h>
 //UIWebView
 #import <ZCKit/UIWebView+ZCStyle.h>
 #import <ZCKit/UIWebView+ZCJS.h>

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8A04C9721DAF361F00BE9869 /* ZCPContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A04C9701DAF361F00BE9869 /* ZCPContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A04C9731DAF361F00BE9869 /* ZCPContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A04C9711DAF361F00BE9869 /* ZCPContext.m */; };
+		8A08936B1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A0893691DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A08936C1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A08936A1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.m */; };
 		8A1247371DAF545200F2DA9C /* IZCServiceContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A1247361DAF545200F2DA9C /* IZCServiceContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A1247391DAF579E00F2DA9C /* IZCService.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A1247381DAF579E00F2DA9C /* IZCService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A12473B1DAF93F800F2DA9C /* IZCUIViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A12473A1DAF93F800F2DA9C /* IZCUIViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -355,6 +357,8 @@
 		8A04C9741DAF364900BE9869 /* IZCContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IZCContext.h; sourceTree = "<group>"; };
 		8A04C9751DAF369500BE9869 /* IZCServiceContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IZCServiceContext.h; sourceTree = "<group>"; };
 		8A04C9761DAF36BD00BE9869 /* IZCAuthContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IZCAuthContext.h; sourceTree = "<group>"; };
+		8A0893691DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZCSystemBackButtonHandler.h"; sourceTree = "<group>"; };
+		8A08936A1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZCSystemBackButtonHandler.m"; sourceTree = "<group>"; };
 		8A1247361DAF545200F2DA9C /* IZCServiceContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCServiceContainer.h; sourceTree = "<group>"; };
 		8A1247381DAF579E00F2DA9C /* IZCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCService.h; sourceTree = "<group>"; };
 		8A12473A1DAF93F800F2DA9C /* IZCUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCUIViewController.h; sourceTree = "<group>"; };
@@ -1208,6 +1212,8 @@
 				8A61335B1DAB3FE20098158B /* UIViewController+ZCStoreKit.m */,
 				8A61335C1DAB3FE20098158B /* UIViewController+ZCVisible.h */,
 				8A61335D1DAB3FE20098158B /* UIViewController+ZCVisible.m */,
+				8A0893691DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.h */,
+				8A08936A1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.m */,
 			);
 			path = UIViewController;
 			sourceTree = "<group>";
@@ -1652,6 +1658,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A08936B1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.h in Headers */,
 				8C325D341DB6877200C8801D /* ZCRegisterObject.h in Headers */,
 				8C325D2E1DB6634C00C8801D /* IZCRegisterObject.h in Headers */,
 				8A04C9721DAF361F00BE9869 /* ZCPContext.h in Headers */,
@@ -1912,6 +1919,7 @@
 				8A6133DA1DAB3FE20098158B /* NSData+ZCMD5.m in Sources */,
 				8A6134931DAB3FE20098158B /* ZCFMDatabaseQueue.m in Sources */,
 				8A6134BF1DAB3FE20098158B /* ZCBaseModel.m in Sources */,
+				8A08936C1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.m in Sources */,
 				8A7A5DF31DACC93100394E43 /* ZC_AFNetworkReachabilityManager.m in Sources */,
 				8A6134A21DAB3FE20098158B /* ZCDataOutletContainer.m in Sources */,
 				8A6133F41DAB3FE20098158B /* NSObject+ZCAssociatedObject.m in Sources */,

@@ -143,7 +143,7 @@ static ZCPContext * sharedInstance;
 }
 
 #pragma mark - context method
-- (NSMutableArray *)heapViewControllers
+- (NSMutableArray *)registerObjects
 {
     if (!_registerObjects) {
         _registerObjects = [[NSMutableArray alloc] initWithCapacity:0];
@@ -292,7 +292,7 @@ static ZCPContext * sharedInstance;
         [object setConfig:cfg];
         
         if ([[url scheme] isEqualToString:@"root"] || [[url scheme] isEqualToString:@"push"] || [[url scheme] isEqualToString:@"present"]) {
-            [self.heapViewControllers addObject:object];
+            [self.registerObjects addObject:object];
         }
     }
     return object;
@@ -387,18 +387,18 @@ static ZCPContext * sharedInstance;
     return _bundle;
 }
 
-#pragma mark - removeHeapViewControllerObjects
+#pragma mark - removeRegisterObject
 - (void)removeRegisterObject:(id)object
 {
     if ([object isKindOfClass:[NSArray class]]) {
         for (id viewController in object) {
-            if ([[ZCPContext sharedInstance].heapViewControllers containsObject:viewController]) {
-                [[ZCPContext sharedInstance].heapViewControllers removeObject:viewController];
+            if ([[ZCPContext sharedInstance].registerObjects containsObject:viewController]) {
+                [[ZCPContext sharedInstance].registerObjects removeObject:viewController];
             }
         }
     }else{
-        if ([[ZCPContext sharedInstance].heapViewControllers containsObject:object]) {
-            [[ZCPContext sharedInstance].heapViewControllers removeObject:object];
+        if ([[ZCPContext sharedInstance].registerObjects containsObject:object]) {
+            [[ZCPContext sharedInstance].registerObjects removeObject:object];
         }
     }
 }
@@ -406,7 +406,7 @@ static ZCPContext * sharedInstance;
 #pragma mark - heapViewControllsHasThisObject
 - (id)registerObjectsContainsObjectWithURL:(NSURL *)url
 {
-    for (id object in self.heapViewControllers) {
+    for (id object in self.registerObjects) {
         if ([[object url].absoluteString isEqualToString:url.absoluteString] ) {
             return object;
         }
