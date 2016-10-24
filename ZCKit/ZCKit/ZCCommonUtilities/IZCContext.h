@@ -31,7 +31,7 @@
 //- (id) getViewControllerForURL:(NSURL *) url basePath:(NSString *) basePath;
 /*
  getObjectForURL与sendObjectURL方法中url的scheme避免使用(root,push,present,pop)
- url 规则 value://target/?key=value&key1=value1
+ url 规则 value://target/action?key=value&key1=value1
  object为调用方法参数
  */
 - (id) getValueForRegisterObjectURL:(NSURL *)url object:(id)object;
