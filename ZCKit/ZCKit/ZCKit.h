@@ -166,6 +166,8 @@ FOUNDATION_EXPORT const unsigned char ZCKitVersionString[];
 #import <ZCKit/ZCButton.h>
 #import <ZCKit/ZCNoMessageView.h>
 #import <ZCKit/ZCTextView.h>
+#import <ZCKit/ZCBarButtonItem.h>
+#import <ZCKit/ZCTextField.h>
 
 #pragma mark - model
 //model

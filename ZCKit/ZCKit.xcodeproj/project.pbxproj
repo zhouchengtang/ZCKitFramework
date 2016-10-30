@@ -349,6 +349,10 @@
 		8C325D2E1DB6634C00C8801D /* IZCRegisterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C325D341DB6877200C8801D /* ZCRegisterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C325D321DB6877200C8801D /* ZCRegisterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C325D351DB6877200C8801D /* ZCRegisterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C325D331DB6877200C8801D /* ZCRegisterObject.m */; };
+		8C4468FA1DC626F0004779D5 /* ZCBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C4468F81DC626F0004779D5 /* ZCBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C4468FB1DC626F0004779D5 /* ZCBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4468F91DC626F0004779D5 /* ZCBarButtonItem.m */; };
+		8C4468FE1DC64700004779D5 /* ZCTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C4468FC1DC64700004779D5 /* ZCTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C4468FF1DC64700004779D5 /* ZCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4468FD1DC64700004779D5 /* ZCTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -696,6 +700,10 @@
 		8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCRegisterObject.h; sourceTree = "<group>"; };
 		8C325D321DB6877200C8801D /* ZCRegisterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterObject.h; sourceTree = "<group>"; };
 		8C325D331DB6877200C8801D /* ZCRegisterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterObject.m; sourceTree = "<group>"; };
+		8C4468F81DC626F0004779D5 /* ZCBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCBarButtonItem.h; sourceTree = "<group>"; };
+		8C4468F91DC626F0004779D5 /* ZCBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCBarButtonItem.m; sourceTree = "<group>"; };
+		8C4468FC1DC64700004779D5 /* ZCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTextField.h; sourceTree = "<group>"; };
+		8C4468FD1DC64700004779D5 /* ZCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1375,6 +1383,8 @@
 			children = (
 				8A61339E1DAB3FE20098158B /* ZCButton.h */,
 				8A61339F1DAB3FE20098158B /* ZCButton.m */,
+				8C4468F81DC626F0004779D5 /* ZCBarButtonItem.h */,
+				8C4468F91DC626F0004779D5 /* ZCBarButtonItem.m */,
 			);
 			path = ZCButton;
 			sourceTree = "<group>";
@@ -1647,6 +1657,8 @@
 			children = (
 				8C0C05F51DAD2D2800439B3F /* ZCTextView.h */,
 				8C0C05F61DAD2D2800439B3F /* ZCTextView.m */,
+				8C4468FC1DC64700004779D5 /* ZCTextField.h */,
+				8C4468FD1DC64700004779D5 /* ZCTextField.m */,
 			);
 			path = ZCTextView;
 			sourceTree = "<group>";
@@ -1658,6 +1670,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C4468FE1DC64700004779D5 /* ZCTextField.h in Headers */,
+				8C4468FA1DC626F0004779D5 /* ZCBarButtonItem.h in Headers */,
 				8A08936B1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.h in Headers */,
 				8C325D341DB6877200C8801D /* ZCRegisterObject.h in Headers */,
 				8C325D2E1DB6634C00C8801D /* IZCRegisterObject.h in Headers */,
@@ -1921,6 +1935,7 @@
 				8A6134BF1DAB3FE20098158B /* ZCBaseModel.m in Sources */,
 				8A08936C1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.m in Sources */,
 				8A7A5DF31DACC93100394E43 /* ZC_AFNetworkReachabilityManager.m in Sources */,
+				8C4468FF1DC64700004779D5 /* ZCTextField.m in Sources */,
 				8A6134A21DAB3FE20098158B /* ZCDataOutletContainer.m in Sources */,
 				8A6133F41DAB3FE20098158B /* NSObject+ZCAssociatedObject.m in Sources */,
 				8A61341E1DAB3FE20098158B /* UIApplication+ZCApplicationSize.m in Sources */,
@@ -2000,6 +2015,7 @@
 				8A6134B11DAB3FE20098158B /* ZCSelectDatePickerView.m in Sources */,
 				8A6134401DAB3FE20098158B /* UIImage+ZCBlur.m in Sources */,
 				8A61346A1DAB3FE20098158B /* UIView+ZCSearch.m in Sources */,
+				8C4468FB1DC626F0004779D5 /* ZCBarButtonItem.m in Sources */,
 				8A6133E41DAB3FE20098158B /* NSDictionary+ZCSafeAccess.m in Sources */,
 				8A7A5DFF1DACC93100394E43 /* ZC_FLAnimatedImageView.m in Sources */,
 				8A7A5DFD1DACC93100394E43 /* ZC_FLAnimatedImage.m in Sources */,

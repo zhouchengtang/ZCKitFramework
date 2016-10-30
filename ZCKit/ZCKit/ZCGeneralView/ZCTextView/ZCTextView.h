@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ZCKit/IZCAction.h>
 
-@interface ZCTextView : UITextView
+@interface ZCTextView : UITextView<IZCAction>
 
 @property(nonatomic,retain) NSString * placeholder;
 @property(nonatomic,assign) NSUInteger maxLength;

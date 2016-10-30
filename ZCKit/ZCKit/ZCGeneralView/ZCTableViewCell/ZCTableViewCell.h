@@ -29,7 +29,7 @@
 @property(nonatomic,retain) id dataItem;
 @property(nonatomic,retain) UIColor * actionColor;
 
--(IBAction) doAction :(id)sender;
+- (IBAction) doAction :(id)sender;
 
 +(id) tableViewCellWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil;
 

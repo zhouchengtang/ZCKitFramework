@@ -14,6 +14,7 @@
 #import "ZCPContext.h"
 #import "NSURL+ZCParam.h"
 #import "ZCNavigationController.h"
+#import <ZCKit/IZCAction.h>
 
 #define CARMERA_BUTTON_WIDTH 50
 
@@ -358,6 +359,22 @@
 {
     [self openUrl:[NSURL URLWithString:@"."] animated:YES];
     return NO;
+}
+
+#pragma mark - doAction
+-(IBAction) doAction:(id)sender{
+    
+    if([sender conformsToProtocol:@protocol(IZCAction)]){
+        NSString * actionName = [sender actionName];
+        id userInfo = [sender userInfo];
+        if([actionName isEqualToString:@"url"]){
+            if(userInfo){
+                [self openUrl:[NSURL URLWithString:
+                               [userInfo stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] animated:YES];
+            }
+        }
+
+    }
 }
 
 /*

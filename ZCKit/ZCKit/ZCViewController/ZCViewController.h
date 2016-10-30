@@ -40,4 +40,6 @@ typedef enum _ZCViewControllerLoadingViewStyle : NSInteger
 
 -(void)keybordShown:(NSNotification *)aNotification;
 
+-(IBAction) doAction:(id)sender;
+
 @end

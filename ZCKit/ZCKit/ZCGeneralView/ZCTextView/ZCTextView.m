@@ -16,6 +16,9 @@
 @end
 
 @implementation ZCTextView
+@synthesize actionName = _actionName;
+@synthesize userInfo = _userInfo;
+@synthesize actionViews = _actionViews;
 
 - (id)initWithFrame:(CGRect)frame
 {
