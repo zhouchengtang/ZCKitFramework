@@ -107,6 +107,7 @@ FOUNDATION_EXPORT const unsigned char ZCKitVersionString[];
 #import <ZCKit/UIImage+ZCOrientation.h>
 #import <ZCKit/UIImage+ZCCapture.h>
 #import <ZCKit/UIImage+ZCBlur.h>
+#import <ZCKit/UIImage+ZCCompress.h>
 //UIImageView
 #import <ZCKit/UIImageView+ZCAddition.h>
 //UILabel

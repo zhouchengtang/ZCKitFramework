@@ -349,6 +349,8 @@
 		8C325D2E1DB6634C00C8801D /* IZCRegisterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C325D341DB6877200C8801D /* ZCRegisterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C325D321DB6877200C8801D /* ZCRegisterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C325D351DB6877200C8801D /* ZCRegisterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C325D331DB6877200C8801D /* ZCRegisterObject.m */; };
+		8C40A7871DCA37E7008FA2F0 /* UIImage+ZCCompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C40A7851DCA37E7008FA2F0 /* UIImage+ZCCompress.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C40A7881DCA37E7008FA2F0 /* UIImage+ZCCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40A7861DCA37E7008FA2F0 /* UIImage+ZCCompress.m */; };
 		8C4468FA1DC626F0004779D5 /* ZCBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C4468F81DC626F0004779D5 /* ZCBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C4468FB1DC626F0004779D5 /* ZCBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C4468F91DC626F0004779D5 /* ZCBarButtonItem.m */; };
 		8C4468FE1DC64700004779D5 /* ZCTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C4468FC1DC64700004779D5 /* ZCTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -700,6 +702,8 @@
 		8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCRegisterObject.h; sourceTree = "<group>"; };
 		8C325D321DB6877200C8801D /* ZCRegisterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterObject.h; sourceTree = "<group>"; };
 		8C325D331DB6877200C8801D /* ZCRegisterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterObject.m; sourceTree = "<group>"; };
+		8C40A7851DCA37E7008FA2F0 /* UIImage+ZCCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZCCompress.h"; sourceTree = "<group>"; };
+		8C40A7861DCA37E7008FA2F0 /* UIImage+ZCCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZCCompress.m"; sourceTree = "<group>"; };
 		8C4468F81DC626F0004779D5 /* ZCBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCBarButtonItem.h; sourceTree = "<group>"; };
 		8C4468F91DC626F0004779D5 /* ZCBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCBarButtonItem.m; sourceTree = "<group>"; };
 		8C4468FC1DC64700004779D5 /* ZCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTextField.h; sourceTree = "<group>"; };
@@ -1068,6 +1072,8 @@
 		8A6133191DAB3FE20098158B /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
+				8C40A7851DCA37E7008FA2F0 /* UIImage+ZCCompress.h */,
+				8C40A7861DCA37E7008FA2F0 /* UIImage+ZCCompress.m */,
 				8A61331A1DAB3FE20098158B /* UIImage+ZCAnimatedGIF.h */,
 				8A61331B1DAB3FE20098158B /* UIImage+ZCAnimatedGIF.m */,
 				8A61331C1DAB3FE20098158B /* UIImage+ZCBlur.h */,
@@ -1670,6 +1676,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C40A7871DCA37E7008FA2F0 /* UIImage+ZCCompress.h in Headers */,
 				8C4468FE1DC64700004779D5 /* ZCTextField.h in Headers */,
 				8C4468FA1DC626F0004779D5 /* ZCBarButtonItem.h in Headers */,
 				8A08936B1DB70F2C00A66997 /* UIViewController+ZCSystemBackButtonHandler.h in Headers */,
@@ -2024,6 +2031,7 @@
 				8A7A5E131DACC93100394E43 /* UIImageView+ZCSD_WebCache.m in Sources */,
 				8A6133E21DAB3FE20098158B /* NSDictionary+ZCMerge.m in Sources */,
 				8A6133FC1DAB3FE20098158B /* NSObject+ZCReflection.m in Sources */,
+				8C40A7881DCA37E7008FA2F0 /* UIImage+ZCCompress.m in Sources */,
 				8A7A5E301DACC93100394E43 /* ZCNetworkMethod.m in Sources */,
 				8A6134841DAB3FE20098158B /* NSString+ZCSwizzle.m in Sources */,
 				8A6134681DAB3FE20098158B /* UITextView+ZCPlaceHolder.m in Sources */,
