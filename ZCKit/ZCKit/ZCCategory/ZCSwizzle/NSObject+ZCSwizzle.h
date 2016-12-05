@@ -21,4 +21,7 @@
  */
 - (void)swizzleMethod:(SEL)origSelector withMethod:(SEL)newSelector class:(Class)class;
 
++ (void)swizzleClassMethod:(SEL)origSelector withMethod:(SEL)newSelector class:(Class)class;
+
+
 @end

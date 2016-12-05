@@ -45,6 +45,20 @@
     }
 }
 
++ (void)swizzleClassMethod:(SEL)origSelector withMethod:(SEL)newSelector class:(Class)class {
+    
+    if (!class) {
+        return;
+    }
+    Method originalMethod = class_getClassMethod(class, origSelector);
+    Method swizzledMethod = class_getClassMethod(class, newSelector);
+    if (!originalMethod || !swizzledMethod) {
+        return;
+    }
+    method_exchangeImplementations(originalMethod, swizzledMethod);
+    
+}
+
 /*
 + (void) load{
     static dispatch_once_t onceToken;

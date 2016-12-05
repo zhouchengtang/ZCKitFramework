@@ -19,7 +19,7 @@
         id obj = [[self alloc] init];
         Class class = NSClassFromString(@"__NSArrayI");
         [obj swizzleMethod:@selector(objectAtIndex:) withMethod:@selector(tzc_objectAtIndex:) class:class];
-        [obj swizzleMethod:@selector(arrayWithObjects:count:) withMethod:@selector(tzc_arrayWithObjects:count:) class:class];
+        [NSObject swizzleClassMethod:@selector(arrayWithObjects:count:) withMethod:@selector(tzc_arrayWithObjects:count:) class:class];
 #endif
     });
 }
