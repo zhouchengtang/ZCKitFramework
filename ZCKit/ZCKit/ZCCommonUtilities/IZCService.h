@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IZCServiceContainer.h"
+#import <ZCKit/IZCServiceContainer.h>
+#import <ZCKit/IZCTask.h>
 
 @protocol IZCService <NSObject>
 

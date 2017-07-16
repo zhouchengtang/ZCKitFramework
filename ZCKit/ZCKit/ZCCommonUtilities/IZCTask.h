@@ -12,4 +12,6 @@
 
 @property(nonatomic,assign) id source;
 
+-(id) initWithSource:(id) source;
+
 @end

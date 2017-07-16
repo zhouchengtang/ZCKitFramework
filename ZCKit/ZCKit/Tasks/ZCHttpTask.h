@@ -1,0 +1,34 @@
+//
+//  ZCHttpTask.h
+//  ZCKit
+//
+//  Created by tangzhoucheng on 2017/7/16.
+//  Copyright © 2017年 zhoucheng. All rights reserved.
+//
+
+#import <ZCKit/ZCKit.h>
+
+@protocol IVTHttpTaskDelegate
+
+@optional
+-(void) vtHttpTask:(id) httpTask didFailError:(NSError *) error;
+-(void) vtHttpTaskDidLoaded:(id) httpTask;
+
+@end
+
+@protocol IZCHttpTask <NSObject>
+
+@property(strong) NSURLRequest * request;
+@property(weak) id delegate;
+@property(strong) id responseBody;
+@property(strong) NSString * responseStr;
+
+-(void) doFailError:(NSError *) error;
+
+-(void) doLoaded;
+
+@end
+
+@interface ZCHttpTask : ZCTask<IZCHttpTask>
+
+@end

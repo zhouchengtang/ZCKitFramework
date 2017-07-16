@@ -349,6 +349,14 @@
 		8C325D2E1DB6634C00C8801D /* IZCRegisterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C325D341DB6877200C8801D /* ZCRegisterObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C325D321DB6877200C8801D /* ZCRegisterObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C325D351DB6877200C8801D /* ZCRegisterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C325D331DB6877200C8801D /* ZCRegisterObject.m */; };
+		8C3863331F1B8FA00078C6E9 /* ZCTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C3863311F1B8FA00078C6E9 /* ZCTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C3863341F1B8FA00078C6E9 /* ZCTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3863321F1B8FA00078C6E9 /* ZCTask.m */; };
+		8C38633B1F1B91980078C6E9 /* ZCService.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C3863391F1B91980078C6E9 /* ZCService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C38633C1F1B91980078C6E9 /* ZCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C38633A1F1B91980078C6E9 /* ZCService.m */; };
+		8C38633F1F1B96AA0078C6E9 /* ZCHttpTask.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C38633D1F1B96AA0078C6E9 /* ZCHttpTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C3863401F1B96AA0078C6E9 /* ZCHttpTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C38633E1F1B96AA0078C6E9 /* ZCHttpTask.m */; };
+		8C3863431F1B97170078C6E9 /* ZCHttpService.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C3863411F1B97170078C6E9 /* ZCHttpService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C3863441F1B97170078C6E9 /* ZCHttpService.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3863421F1B97170078C6E9 /* ZCHttpService.m */; };
 		8C40A7871DCA37E7008FA2F0 /* UIImage+ZCCompress.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C40A7851DCA37E7008FA2F0 /* UIImage+ZCCompress.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8C40A7881DCA37E7008FA2F0 /* UIImage+ZCCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C40A7861DCA37E7008FA2F0 /* UIImage+ZCCompress.m */; };
 		8C4468FA1DC626F0004779D5 /* ZCBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C4468F81DC626F0004779D5 /* ZCBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -702,6 +710,14 @@
 		8C325D2D1DB6634C00C8801D /* IZCRegisterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IZCRegisterObject.h; sourceTree = "<group>"; };
 		8C325D321DB6877200C8801D /* ZCRegisterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCRegisterObject.h; sourceTree = "<group>"; };
 		8C325D331DB6877200C8801D /* ZCRegisterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterObject.m; sourceTree = "<group>"; };
+		8C3863311F1B8FA00078C6E9 /* ZCTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTask.h; sourceTree = "<group>"; };
+		8C3863321F1B8FA00078C6E9 /* ZCTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTask.m; sourceTree = "<group>"; };
+		8C3863391F1B91980078C6E9 /* ZCService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCService.h; sourceTree = "<group>"; };
+		8C38633A1F1B91980078C6E9 /* ZCService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCService.m; sourceTree = "<group>"; };
+		8C38633D1F1B96AA0078C6E9 /* ZCHttpTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCHttpTask.h; sourceTree = "<group>"; };
+		8C38633E1F1B96AA0078C6E9 /* ZCHttpTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCHttpTask.m; sourceTree = "<group>"; };
+		8C3863411F1B97170078C6E9 /* ZCHttpService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCHttpService.h; sourceTree = "<group>"; };
+		8C3863421F1B97170078C6E9 /* ZCHttpService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCHttpService.m; sourceTree = "<group>"; };
 		8C40A7851DCA37E7008FA2F0 /* UIImage+ZCCompress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZCCompress.h"; sourceTree = "<group>"; };
 		8C40A7861DCA37E7008FA2F0 /* UIImage+ZCCompress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZCCompress.m"; sourceTree = "<group>"; };
 		8C4468F81DC626F0004779D5 /* ZCBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCBarButtonItem.h; sourceTree = "<group>"; };
@@ -740,6 +756,8 @@
 		8A6132891DAB3FA40098158B /* ZCKit */ = {
 			isa = PBXGroup;
 			children = (
+				8C38632F1F1B8F480078C6E9 /* Services */,
+				8C3863301F1B8F480078C6E9 /* Tasks */,
 				8A7A5DA21DACC93100394E43 /* Vendors */,
 				8A7A5DE11DACC93100394E43 /* ZCCommonUtilities */,
 				8A6132921DAB3FE20098158B /* ZCCategory */,
@@ -1669,6 +1687,28 @@
 			path = ZCTextView;
 			sourceTree = "<group>";
 		};
+		8C38632F1F1B8F480078C6E9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8C3863391F1B91980078C6E9 /* ZCService.h */,
+				8C38633A1F1B91980078C6E9 /* ZCService.m */,
+				8C3863411F1B97170078C6E9 /* ZCHttpService.h */,
+				8C3863421F1B97170078C6E9 /* ZCHttpService.m */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8C3863301F1B8F480078C6E9 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				8C3863311F1B8FA00078C6E9 /* ZCTask.h */,
+				8C3863321F1B8FA00078C6E9 /* ZCTask.m */,
+				8C38633D1F1B96AA0078C6E9 /* ZCHttpTask.h */,
+				8C38633E1F1B96AA0078C6E9 /* ZCHttpTask.m */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1676,6 +1716,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C38633F1F1B96AA0078C6E9 /* ZCHttpTask.h in Headers */,
+				8C3863431F1B97170078C6E9 /* ZCHttpService.h in Headers */,
+				8C3863331F1B8FA00078C6E9 /* ZCTask.h in Headers */,
+				8C38633B1F1B91980078C6E9 /* ZCService.h in Headers */,
 				8C40A7871DCA37E7008FA2F0 /* UIImage+ZCCompress.h in Headers */,
 				8C4468FE1DC64700004779D5 /* ZCTextField.h in Headers */,
 				8C4468FA1DC626F0004779D5 /* ZCBarButtonItem.h in Headers */,
@@ -1987,7 +2031,9 @@
 				8A61342A1DAB3FE20098158B /* UIButton+ZCSubmitting.m in Sources */,
 				8A61348B1DAB3FE20098158B /* ZCFileDataCache.m in Sources */,
 				8A6134761DAB3FE20098158B /* UIWebView+ZCStyle.m in Sources */,
+				8C3863441F1B97170078C6E9 /* ZCHttpService.m in Sources */,
 				8A61342C1DAB3FE20098158B /* UIColor+ZCGradient.m in Sources */,
+				8C38633C1F1B91980078C6E9 /* ZCService.m in Sources */,
 				8A6134141DAB3FE20098158B /* NSURL+ZCParam.m in Sources */,
 				8A6134121DAB3FE20098158B /* NSTimer+ZCBlocks.m in Sources */,
 				8C0C05EF1DAD2B3400439B3F /* ZCRefreshTableDataController.m in Sources */,
@@ -2043,6 +2089,7 @@
 				8A6134441DAB3FE20098158B /* UIImage+ZCColor.m in Sources */,
 				8A6133F01DAB3FE20098158B /* NSObject+ZCAddProperty.m in Sources */,
 				8A61348F1DAB3FE20098158B /* ZCFMDatabaseAdditions.m in Sources */,
+				8C3863341F1B8FA00078C6E9 /* ZCTask.m in Sources */,
 				8A6134BB1DAB3FE20098158B /* ZCTableViewCell.m in Sources */,
 				8A61340A1DAB3FE20098158B /* NSString+ZCSize.m in Sources */,
 				8A6134601DAB3FE20098158B /* UISearchBar+ZCBlocks.m in Sources */,
@@ -2051,6 +2098,7 @@
 				8A6134A51DAB3FE20098158B /* ZCAlertView.m in Sources */,
 				8A7A5E1F1DACC93100394E43 /* ZC_SDWebImageDecoder.m in Sources */,
 				8A7A5E231DACC93100394E43 /* ZC_SDWebImageDownloaderOperation.m in Sources */,
+				8C3863401F1B96AA0078C6E9 /* ZCHttpTask.m in Sources */,
 				8A7A5E091DACC93100394E43 /* UIButton+ZCSD_WebCache.m in Sources */,
 				8A7A5E2A1DACC93100394E43 /* ZCLoadImageHelper.m in Sources */,
 				8A6134021DAB3FE20098158B /* NSString+ZCContains.m in Sources */,

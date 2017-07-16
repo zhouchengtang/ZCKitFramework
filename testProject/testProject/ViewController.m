@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()<ZCURLDataSourceDelegate>
+@interface ViewController ()<ZCURLDataSourceDelegate, IZCHttpTaskDelegate>
 
 @property(nonatomic, strong)ZCURLDataSource * urlDataSource;
 @property(nonatomic, strong)IBOutlet ZCTextView * textView;
@@ -56,6 +56,12 @@
         }];
     }
     [[ZCPContext sharedInstance] resignObjectForURL:[NSURL URLWithString:@"register://r_test_1"]];
+    
+    //task sevices
+    ZCHttpTask * httpTask = [[ZCHttpTask alloc] initWithSource:self];
+    httpTask.request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://platform.sina.com.cn/client/getHotBlogger?app_key=4135432745&deviceid=11111"]];
+    httpTask.delegate = self;
+    [[ZCPContext sharedInstance] handle:@protocol(IZCHttpTask) task:httpTask priority:0];
 }
 
 - (void)rootButtonClick
@@ -87,6 +93,11 @@
     if (self.objectURLResultsCallback) {
         self.objectURLResultsCallback(dataSource.dataObject, self);
     }
+}
+
+- (void)vtHttpTaskDidLoaded:(id)httpTask
+{
+    NSLog(@"%@", [httpTask responseBody]);
 }
 
 - (void)didReceiveMemoryWarning {

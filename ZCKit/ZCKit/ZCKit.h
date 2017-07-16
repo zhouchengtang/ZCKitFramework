@@ -231,6 +231,15 @@ FOUNDATION_EXPORT const unsigned char ZCKitVersionString[];
 
 #import <ZCKit/ZCPContext.h>
 #import <ZCKit/ZCRegisterObject.h>
+
+//tasks
+#import <ZCKit/ZCTask.h>
+#import <ZCKit/ZCHttpTask.h>
+
+//services
+#import <ZCKit/ZCService.h>
+#import <ZCKit/ZCHttpService.h>
+
 //protocol
 #import <ZCKit/IZCAction.h>
 #import <ZCKit/IZCContext.h>

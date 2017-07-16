@@ -68,6 +68,11 @@
     return _instance;
 }
 
+-(void) didReceiveMemoryWarning{
+    [_instance didReceiveMemoryWarning];
+}
+
+
 @end
 
 @interface ZCPContext()
@@ -432,6 +437,41 @@ static ZCPContext * sharedInstance;
         url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@", urlScheme, url.absoluteString]];
     }
     return url;
+}
+
+#pragma mark - serviceHelpMethod
+-(BOOL) handle:(Protocol *)taskType task:(id<IZCTask>)task priority:(NSInteger)priority{
+    for(id container in _serviceContainers){
+        if([container hasTaskType:taskType]){
+            id s = [container instance];
+            if([s handle:taskType task:task priority:priority]){
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+-(BOOL) cancelHandle:(Protocol *)taskType task:(id<IZCTask>)task{
+    for(id container in _serviceContainers){
+        if([container hasTaskType:taskType]){
+            id s = [container instance];
+            if([s cancelHandle:taskType task:task]){
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+-(BOOL) cancelHandleForSource:(id) source{
+    for(id container in _serviceContainers){
+        id s = [container instance];
+        if([s cancelHandleForSource:source]){
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end
