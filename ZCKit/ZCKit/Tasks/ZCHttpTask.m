@@ -14,14 +14,14 @@
 
 - (void)doLoaded
 {
-    if([_delegate respondsToSelector:@selector(vtHttpTaskDidLoaded:)]){
-        [_delegate vtHttpTaskDidLoaded:self];
+    if([_delegate respondsToSelector:@selector(zcHttpTaskDidLoaded:)]){
+        [_delegate zcHttpTaskDidLoaded:self];
     }
 }
 
 -(void) doFailError:(NSError *) error{
-    if([_delegate respondsToSelector:@selector(vtHttpTask:didFailError:)]){
-        [_delegate vtHttpTask:self didFailError:error];
+    if([_delegate respondsToSelector:@selector(zcHttpTask:didFailError:)]){
+        [_delegate zcHttpTask:self didFailError:error];
     }
 }
 

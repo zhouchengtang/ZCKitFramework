@@ -95,7 +95,7 @@
     }
 }
 
-- (void)vtHttpTaskDidLoaded:(id)httpTask
+- (void)zcHttpTaskDidLoaded:(id)httpTask
 {
     NSLog(@"%@", [httpTask responseBody]);
 }

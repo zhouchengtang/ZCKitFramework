@@ -200,7 +200,7 @@ static ZCPContext * sharedInstance;
                         }
                     }
                     else{
-                        NSLog(@"Service Class %@ not implement IVTService",className);
+                        NSLog(@"Service Class %@ not implement IZCService",className);
                     }
                 }
                 else{

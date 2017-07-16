@@ -8,11 +8,11 @@
 
 #import <ZCKit/ZCKit.h>
 
-@protocol IVTHttpTaskDelegate
+@protocol IZCHttpTaskDelegate
 
 @optional
--(void) vtHttpTask:(id) httpTask didFailError:(NSError *) error;
--(void) vtHttpTaskDidLoaded:(id) httpTask;
+-(void) zcHttpTask:(id) httpTask didFailError:(NSError *) error;
+-(void) zcHttpTaskDidLoaded:(id) httpTask;
 
 @end
 

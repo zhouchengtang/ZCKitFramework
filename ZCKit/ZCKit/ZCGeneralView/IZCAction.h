@@ -1,5 +1,5 @@
 //
-//  IVTAction.h
+//  IZCAction.h
 //  vTeam
 //
 //  Created by tang zhoucheng on 13-5-3.
