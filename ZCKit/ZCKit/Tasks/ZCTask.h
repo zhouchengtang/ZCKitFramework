@@ -11,4 +11,6 @@
 
 @interface ZCTask : NSObject<IZCTask>
 
+-(id) initWithSource:(id) source;
+
 @end

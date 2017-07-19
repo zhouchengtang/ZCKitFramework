@@ -61,6 +61,9 @@
     ZCHttpTask * httpTask = [[ZCHttpTask alloc] initWithSource:self];
     httpTask.request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://platform.sina.com.cn/client/getHotBlogger?app_key=4135432745&deviceid=11111"]];
     httpTask.delegate = self;
+    httpTask.completionHandler = ^(id data, id<IZCTask> task, NSError *error) {
+        NSLog(@"%@", [(id<IZCHttpTask>)task responseBody]);
+    };
     [[ZCPContext sharedInstance] handle:@protocol(IZCHttpTask) task:httpTask priority:0];
 }
 

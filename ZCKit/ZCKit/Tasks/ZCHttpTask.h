@@ -16,7 +16,7 @@
 
 @end
 
-@protocol IZCHttpTask <NSObject>
+@protocol IZCHttpTask <IZCTask>
 
 @property(strong) NSURLRequest * request;
 @property(weak) id delegate;
@@ -24,7 +24,6 @@
 @property(strong) NSString * responseStr;
 
 -(void) doFailError:(NSError *) error;
-
 -(void) doLoaded;
 
 @end

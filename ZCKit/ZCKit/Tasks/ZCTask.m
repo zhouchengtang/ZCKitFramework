@@ -10,7 +10,7 @@
 
 @implementation ZCTask
 
-@synthesize source = _source;
+@synthesize source = _source, completionHandler = _completionHandler;
 
 -(id) initWithSource:(id) source{
     if((self = [super init])){

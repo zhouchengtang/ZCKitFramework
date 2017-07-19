@@ -40,6 +40,9 @@
                     [httpTask doLoaded];
                 }
             }
+            if (httpTask.completionHandler) {
+                httpTask.completionHandler(data, httpTask, error);
+            }
         }] resume];
 
         return YES;

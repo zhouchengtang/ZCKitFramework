@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+
 @protocol IZCTask <NSObject>
 
-@property(nonatomic,assign) id source;
+typedef void(^ZCTaskCompletionHandler)(id data, id<IZCTask> task, NSError * error);
 
--(id) initWithSource:(id) source;
+@property(nonatomic,weak) id source;
+
+@property(nonatomic,copy)ZCTaskCompletionHandler completionHandler;
 
 @end
