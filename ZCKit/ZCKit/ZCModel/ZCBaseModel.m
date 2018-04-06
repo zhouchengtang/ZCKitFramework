@@ -414,9 +414,12 @@
             //设置key&value
             if (returnValue) {
                 [modelDict setObject:returnValue forKey:modelProperty.name];
-            }else{
+            }
+            /*
+            else{
                 [modelDict setObject:@"" forKey:modelProperty.name];
             }
+            */
         }
     }
     return modelDict;
