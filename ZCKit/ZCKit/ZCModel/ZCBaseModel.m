@@ -1,4 +1,3 @@
-
 //
 //  ZCBaseModel.m
 //  PrivateAccountBook
@@ -26,7 +25,8 @@
 
 @implementation ZCBaseModel
 {
-   NSDictionary * _zcBaaseModelPropertyMapDic;
+    NSDictionary * _zcBaaseModelPropertyMapDic;
+    NSDictionary * _modelDict;
 }
 
 - (instancetype)initWithDictionary: (NSDictionary *)dictionary
@@ -95,9 +95,6 @@
 
 - (void)setModelWithDictionary: (NSDictionary *) data
 {
-    if (![data isKindOfClass:[NSDictionary class]]) {
-        return;
-    }
     if ([self propertyMapDic] == nil) {
         [self assginToPropertyWithDictionary:data];
     } else {
@@ -110,6 +107,9 @@
     if (data == nil) {
         return;
     }
+    
+    _modelDict = data;
+    
     NSArray * allPropertys = [self allPropertys];
     ///赋值给实体类的属性
     for (NSInteger i = 0; i < allPropertys.count; i ++) {
@@ -140,9 +140,6 @@
                         NSMutableArray * modelArray = [[NSMutableArray alloc] initWithCapacity:0];
                         ArgumentValue = [modelArray modelArrayWithDataArray:ArgumentValue modelProperty:modelProperty];
                     }
-                }else if ([ArgumentValue isKindOfClass:[NSNull class]])
-                {
-                    ArgumentValue = @"";
                 }
             }
             //如果返回值为BOOL等类型
@@ -253,23 +250,24 @@
         id superModel = [[clazz alloc] init];
         if([superModel allPropertys].count > 0)
             [allNames addObjectsFromArray:[superModel allPropertys]];
+        
+        ///存储属性的个数
+        unsigned int propertyCount = 0;
+        ///通过运行时获取当前类的属性
+        objc_property_t * propertys = class_copyPropertyList([self class], &propertyCount);
+        [allNames addObjectsFromArray:[self getPropertysArrayWithPropertys:propertys propertyCount:propertyCount]];
+        /*
+         unsigned int protocolsCount = 0;
+         Protocol * __unsafe_unretained*protocols = objc_copyProtocolList(&protocolsCount);
+         
+         for (NSInteger i = 0; i < protocolsCount; i++) {
+         unsigned int protocolsPropertyCount = 0;
+         objc_property_t * protocolsPropertys = protocol_copyPropertyList(protocols[i], &protocolsPropertyCount);
+         [allNames addObjectsFromArray:[self getPropertysArrayWithPropertys:protocolsPropertys propertyCount:protocolsPropertyCount]];
+         }
+         */
     }
-    
-    ///存储属性的个数
-    unsigned int propertyCount = 0;
-    ///通过运行时获取当前类的属性
-    objc_property_t * propertys = class_copyPropertyList([self class], &propertyCount);
-    [allNames addObjectsFromArray:[self getPropertysArrayWithPropertys:propertys propertyCount:propertyCount]];
-    /*
-    unsigned int protocolsCount = 0;
-    Protocol * __unsafe_unretained*protocols = objc_copyProtocolList(&protocolsCount);
- 
-    for (NSInteger i = 0; i < protocolsCount; i++) {
-        unsigned int protocolsPropertyCount = 0;
-        objc_property_t * protocolsPropertys = protocol_copyPropertyList(protocols[i], &protocolsPropertyCount);
-        [allNames addObjectsFromArray:[self getPropertysArrayWithPropertys:protocolsPropertys propertyCount:protocolsPropertyCount]];
-    }
-    */
+
     return allNames;
 }
 
@@ -287,6 +285,9 @@
         objc_property_t property = propertys[i];
         const char * propertyName = property_getName(property);
         modelProperty.name = [NSString stringWithUTF8String:propertyName];
+        if (_modelDict && ![_modelDict objectForKey:modelProperty.name]) {
+            continue;
+        }
         
         const char *attrs = property_getAttributes(property);
         NSString* propertyAttributes = @(attrs);
@@ -367,9 +368,6 @@
                 if ([[returnValue class] isSubclassOfClass:[ZCBaseModel class]]) {
                     returnValue = [(ZCBaseModel *)returnValue dictionaryWithModel];
                 }else if ([[returnValue class] isSubclassOfClass:[NSMutableArray class]] && [(NSMutableArray *)returnValue modelProperty]){
-                    returnValue = [(NSMutableArray *)returnValue dataArrayWithModelArray:returnValue];
-                }else if ([[returnValue class] isSubclassOfClass:[NSMutableArray class]] && (modelProperty.protocol && NSClassFromString(modelProperty.protocol))){
-                    [(NSMutableArray *)returnValue setModelProperty:modelProperty];
                     returnValue = [(NSMutableArray *)returnValue dataArrayWithModelArray:returnValue];
                 }
             }
